@@ -1,0 +1,124 @@
+
+---
+output:
+  slidy_presentation: default
+  html_document: default
+  ioslides_presentation: default
+  beamer_presentation: default
+---
+
+## Econ 184b, Econometrics, Fall 2021	
+### Module 1: Statistics Review
+
+## Population and data: repeated sampling
+Example 1: an abstract population
+
+* Population: a Bernoulli distribution with mean $p$ = 0.5
+* Data: a random sample of 54 observations from the above population/distribution
+* How to think about the population and data? 
+
+## 
+* The above population is the distribution of a fair coin. A fair coin gives a random outcome of 1 (head) or 0 (tail) with equal probability.
+* However, this does NOT mean that if you flip a fair coin 54 times, you will always get 27 heads and 27 tails! When you flip the coin 54 times, what you get is data: 54 binary numbers. 
+
+Try this in R: 
+```{r,results=F}
+a = rbinom(54, 1, 0.5)
+print(a)
+mean(a)
+# The rbinom function generates random numbers with the binomial distribution.
+```
+
+
+## 
+* In other words: data is a random realization from the population.
+  - Goal of econometrics: learn the population from random data.
+* From the data, we determine whether the data is from a fair coin.
+
+Try this in R: 
+```{r,results=F}
+a = rbinom(54, 1, 0.5)
+b = rbinom(54, 1, 0.4)
+mean(a)
+mean(b)
+```
+
+## Example 2: a concrete population
+Population: country of origin of all students at Brandeis (5771 students)
+
+* The population is 5771 numbers (either 1 "domestic" or 0 "international") and 4161 of these numbers are 1.
+* The population is represented by a Bernoulli distribution 
+  - mean $p$ = $\frac{4161}/{5771} = 0.7210189
+* Data: a random sample of 54 observations from the above population.
+
+##
+How to think about the population and data:
+
+* Again, data is a random realization from the population.
+* Goal of econometrics: learn the population from random data.
+* Of course, if we are an administrator who observes the entire population, then there’s no need to do econometrics.
+
+**Econometrics/statistics is only useful when we do not observe the population.**
+
+## In many cases, we **never** observe the entire population
+
+Example: population unemployment rate in the U.S.
+
+* Goal: find out exactly what percentage of the people are unemployed.
+* Population: employment status of everyone in the U.S. (over 300 million)
+* Can we observe the population?
+  - If we could send a drone to spy on every person in the U.S. and find out their employment status, then yes. But in practice, this cannot possibly be done.
+
+##
+* Data: interview 500 people and find out their employment status.
+* How to think about the population and the data:
+  - Population: 300 million numbers (either 1 “unemployed” or 0
+“employed”).
+  - This is represented by a Bernoulli distribution with mean p, where p is the percentage of 1 in these 300 million numbers.
+  - Data: 500 random realization from the above Bernoulli distribution
+  
+
+## Probability distributions
+* Notations
+  - We will use R.V for the phrase “Random variable”.
+  - Upper case letters (e.g., X and Y) denote R.V’s.
+  - Lower case letters (e.g., a and b) denote non-random numbers
+(constants).
+* Discrete R.V: a random variable that takes only a discrete set of values, like
+0, 1, 2....
+  - Example: Bernoulli R.V. (only takes value 0 and 1).
+* Continuous R.V: a random variable that can take any value in a continuum.
+  - Example: normal R.V. (can take any value in $\mathbb{R}$, the set of real numbers)
+  
+##
+* The randomness of a R.V., $X$, can be fully summarized by the cumulative
+distribution function (cdf) of $X$:
+  - $F(x)$ is a function of $x$ (non-random): $F(x)=Pr(X\leq x)$.
+  - Notation: $Pr$ denotes the probability of an event.
+  - $F(x)$ is non-decreasing: $F(1) \leq F(2)$.
+* If the event $X\leq 1$ occurs, then $X\leq 2$ must occur. Therefore,
+$Pr(X\leq 1)$ ≤ $Pr(X\leq 2)$.
+* If the cdf is differentiable, then the derivative is called the probability density
+function (pdf): $f(x) = dF(x)/dx$.
+  - Discrete R.V. cannot have a differentiable cdf so discrete R.V. do not
+have a pdf.
+
+## 
+Example: if X is a continuous R.V., how to compute $Pr(15<X\leq 20)$?
+
+* From the cdf:
+* From the pdf:
+
+##
+![](figures/m1_pdf_cdf.png){height=450px}
+
+## Expected value or expectation or mean
+
+Example:
+• Pr(𝑋 = 1) = 𝑝 and Pr(𝑋 = 0) = 1 − 𝑝.
+• Then 𝐸(𝑋) = 1 × 𝑝 + 0 × (1 − 𝑝) = 𝑝. So for Bernoulli variables, the
+probability of 𝑋 = 1 is the same as the mean 𝐸(𝑋).
+Example:
+• Possible values of 𝑋 are 3, 73 and 89 with the following distribution:
+Pr(𝑋 = 3) = 0.2 and Pr(𝑋 = 73) = 0.35 and Pr(𝑋 = 89) = 0.45
+• Then 𝐸(𝑋) = 3 × 0.2 + 73 × 0.35 + 89 × 0.45 = 66.2

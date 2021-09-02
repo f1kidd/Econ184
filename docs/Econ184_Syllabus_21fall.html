@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Econ184_Syllabus_21fall</title>
+
+<script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Econ 57a Environmental Economics</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="Module_1.html">Module 1</a>
+</li>
+<li>
+  <a href="Module_2.html">Module 2</a>
+</li>
+<li>
+  <a href="Module_3.html">Module 3</a>
+</li>
+<li>
+  <a href="Module_4.html">Module 4</a>
+</li>
+<li>
+  <a href="Module_5.html">Module 5</a>
+</li>
+<li>
+  <a href="Module_6.html">Module 6</a>
+</li>
+<li>
+  <a href="Module_7.html">Module 7</a>
+</li>
+<li>
+  <a href="Module_8.html">Module 8</a>
+</li>
+<li>
+  <a href="Module_9.html">Module 9</a>
+</li>
+<li>
+  <a href="Module_10.html">Module 10</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+
+</div>
+
+
+<div id="syllabus" class="section level1">
+<h1>Syllabus</h1>
+<p>ECON 184B, Econometrics, Fall 2021<br />
+Instructor: Prof. Xinde “James” Ji<br />
+Email: <a href="mailto:xji@brandeis.edu" class="email">xji@brandeis.edu</a></p>
+<p>Teaching/Course Assistants:<br />
+Joshua Ye, <a href="mailto:joshuaye@brandeis.edu" class="email">joshuaye@brandeis.edu</a><br />
+Frances Hoffen, <a href="mailto:fhoffen@brandeis.edu" class="email">fhoffen@brandeis.edu</a><br />
+Sasha Skarboviychuk, <a href="mailto:sashaskarb@brandeis.edu" class="email">sashaskarb@brandeis.edu</a></p>
+<p>Lecture: <em>Lown 002</em></p>
+<ul>
+<li>Tuesday/Thursday 2:00-3:30 pm (Section 1)</li>
+<li>Tuesday/Thursday 4:00-5:30 pm (Section 2)</li>
+</ul>
+<p>Recitation:</p>
+<ul>
+<li>Friday 10:00-11:30 am at <em>Golding 101</em></li>
+</ul>
+<p>Office Hours: Wednesday 2:00-5:00 pm or by appointment.</p>
+<ul>
+<li>Physically at my office (<em>Sachar 1A</em>)</li>
+<li>Virtually via Zoom <a href="https://brandeis.zoom.us/j/97542193183" class="uri">https://brandeis.zoom.us/j/97542193183</a></li>
+</ul>
+<p>Class Data Hub: <a href="https://github.com/f1kidd/Econ184">github.com/f1kidd/Econ184</a></p>
+<p><em>Disclaimer: Email is the preferred communication mechanism, and I promise to respond to your email within 24 hours (48 hours on weekends). Using alternative communication media (instant messaging) does not guarantee a faster response.</em></p>
+<div id="teaching-modes" class="section level2">
+<h2>Teaching Modes</h2>
+<p>This class will be taught fully in person unless otherwise notified. Automatic recordings of synchronous class sessions will be uploaded to LATTE shortly after each lecture. Attendance will not be tracked, and you are not required to inform the instructor when you will miss an in-person class session.</p>
+</div>
+<div id="covid-19-and-our-classroom1" class="section level2">
+<h2>COVID-19 and Our Classroom<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></h2>
+<p>We are still very much in a public health crisis. It is important to begin from the premise because the pandemic fundamentally shapes what this semester looks like, how we inhabit the class, and how we treat each other.</p>
+<p>Here are some thoughts that I want to share with you upfront:</p>
+<ul>
+<li>We are all in this pandemic together - your actions will affect not only yourself: but also your loved ones, my loved ones, and every one of our community members.</li>
+<li>Some of our lives may be relatively unaffected by the pandemic, while others have experienced profound tragedies. Do not make assumptions about others’ experiences with the virus.</li>
+<li>We need to show compassion and respect to each other. Now more than ever.</li>
+</ul>
+<div id="on-symptoms" class="section level3">
+<h3>On Symptoms</h3>
+<p>If you are sick, particularly if you bear any symptoms resembling COVID-19 or if you test positive for COVID, do not come to class until you are cleared. Lecture recordings will be provided, and I will work with you to make sure you can catch up.</p>
+</div>
+<div id="on-vaccines" class="section level3">
+<h3>On Vaccines</h3>
+<ul>
+<li>I have been fully vaccinated with the Pfizer mRNA (BNT162b2) vaccine.</li>
+<li>I will NOT ask whether you have been vaccinated, and you do not have any obligation to tell me your vaccination status.</li>
+</ul>
+</div>
+<div id="on-masks2" class="section level3">
+<h3>On Masks<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></h3>
+<p>Per university policy (as of 8/18/2021), masks are required for synchronous class sessions and for office hours with more than 4 persons present. Masks need to cover both your mouth and your nose. Exceptions are:</p>
+<ul>
+<li>When you take a brief sip of beverage.</li>
+<li>When speaking in a group setting where all others present are masked. The speaker(s) may lower or remove their mask while speaking and then raise or replace their mask to allow others to speak.</li>
+<li>Other exceptions/accommodations approved by the instructor.</li>
+</ul>
+</div>
+</div>
+<div id="overview" class="section level2">
+<h2>Overview</h2>
+<p>Is your Brandeis education worth it?<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> How much impact does climate change have on agriculture<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>, the economy<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>, or your PSAT score?<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a> What explains the sex ratio imbalance in East Asia<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a> and Southeastern Asia<a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a>? Fascinating questions as they are, we are not here to seek answers to these questions directly (<em>you are welcomed to check out relevant courses to these questions</em>). Instead, you will be learning the methods and techniques that allow you to answer these questions or any other empirical questions that fascinate you.</p>
+<p>Econometrics is the backbone of economics as a social science discipline: it offers the scientific rigor just like experiments to physics, chemistry, and medical sciences. Albeit, the “experiments” are set out in the real world, and econometrics provides a toolbox to learn from those experiments. Equally importantly, econometrics provides a framework to think about empirical problems in a rigorous way - this credibility revolution has certainly spilled over to other fields: e.g. political science, public health, psychology, business, and marketing.</p>
+<p>In this class, you will be primed with the theoretical and the applied aspects of econometrics. You will learn the intuitions and statistical constructs behind various econometric tools; you will gain hands-on experience conducting econometric analysis using modern technology; and you will be able to read, interpret, and formulate empirical studies using econometric tools.</p>
+</div>
+<div id="learning-goals" class="section level2">
+<h2>Learning goals</h2>
+<ol style="list-style-type: decimal">
+<li>Know the math (with paper and pencil)
+<ul>
+<li>Understand the statistical properties of econometric estimation (expectations, hypothesis testing, etc.)</li>
+<li>Understand the motivation and assumptions of common econometric tools (e.g., linear regression, nonlinear regression, instrumental variables regression, panel models, etc.)</li>
+</ul></li>
+<li>Learn to code (with R)
+<ul>
+<li>Import, process, and manipulate data</li>
+<li>Implement common econometric tools and interpret software outputs</li>
+<li>Perform Monte Carlo simluations to evaluate properties of econometric tools</li>
+</ul></li>
+<li>Explain the world (with a critical mind)
+<ul>
+<li>Critically evaluate empirical studies using econometric and statistical tools</li>
+<li>Frame real-world problems into appropriate econometric models and provide meaningful answers</li>
+</ul></li>
+</ol>
+</div>
+<div id="prerequisites" class="section level2">
+<h2>Prerequisites</h2>
+<p>Prerequisites: Econ 80a and Econ 83a; Econ 80a may be taken concurrently.</p>
+</div>
+<div id="textbooks" class="section level2">
+<h2>Textbooks</h2>
+<p>Required textbook: James H. Stock and Mark W. Watson, Introduction to Econometrics (4th edition), Pearson/Addison Wesley, 2019.</p>
+<ul>
+<li>You can use the 3rd edition to study but references to chapter/exercise numbers correspond to the 4th edition.</li>
+</ul>
+<p>If you are having difficulty purchasing course materials, please make an appointment with your Student Financial Services or Academic Services advisor to discuss possible funding options and/or textbook alternatives.</p>
+<p><strong>Readings</strong><br />
+Additional readings will be posted on LATTE as the class goes along.</p>
+</div>
+<div id="grading" class="section level2">
+<h2>Grading</h2>
+<ul>
+<li>In-class exercises: 10%
+<ul>
+<li>We will be solving most in-class exercises together. Gradings are based on correctness, but you should be able to get the correct answer with active participation in class.</li>
+</ul></li>
+<li>Problem sets: 20%
+<ul>
+<li>All problem sets are individual. There will be ~7 problems sets throughout the semester.</li>
+<li>Only electronic submission is accepted. Late submissions will be accepted with a 10% penalty each day.</li>
+<li>You need to submit both the compiled pdf/html file and the source code. You will receive a 5% bonus if your code is entirely reproducible with minimal altercation (e.g., package installation).</li>
+</ul></li>
+<li>Midterm 1: 25%*
+<ul>
+<li>Closed book. Pen and calculator.</li>
+</ul></li>
+<li>Midterm 2: 25%*
+<ul>
+<li>Semi-cumulative (you will need to use knowledge from the first half of the course). Closed book. Pen and calculator.</li>
+</ul></li>
+<li>Empirical project assignment: 20%
+<ul>
+<li>Instructions to follow.</li>
+</ul></li>
+</ul>
+</div>
+<div id="class-policies" class="section level2">
+<h2>Class Policies</h2>
+<div id="recitation" class="section level4">
+<h4>Recitation</h4>
+<p>Recitation is strongly encouraged but not mandatory. No graded parts will be assigned during recitation time. That said, recitation is an important component of the class where we commit dedicated times for you to strengthen your grasp on R coding, problem sets, and prepare for exams.</p>
+</div>
+<div id="computer-and-equipments" class="section level4">
+<h4>Computer and Equipments</h4>
+<p>You are expected to bring a personal computer to most lecture sessions, as we will be completing in-class exercises. You are expected NOT to use your computer to do anything unrelated to the class. Doing so not only hinders your own learning but also potentially distracts your colleagues. I reserve the right to place you in the last row of the classroom or ask you to leave the classroom.</p>
+<p>You will need to have the following software installed on your computer. These softwares are available across platforms (Windows, Mac, Linux) and free of charge.</p>
+<ul>
+<li>R (separate from RStudio)</li>
+<li>Rstudio</li>
+</ul>
+<p>If you encounter any difficulties with pieces of equipment that hinder your learning, please reach out to me immediately, and I will do my best to help. Additionally, Brandeis offers student emergency funds to students in need. Email <a href="mailto:emergencyfunds@brandeis.edu" class="email">emergencyfunds@brandeis.edu</a> for more information.</p>
+</div>
+<div id="credit-hours" class="section level4">
+<h4>Credit Hours</h4>
+<p>Success in this four-credit course is based on the expectation that students will spend a minimum of nine hours of study time per week in preparation for class (readings, papers, discussion sections, preparation for exams, etc.</p>
+</div>
+<div id="academic-honesty" class="section level4">
+<h4>Academic Honesty</h4>
+<p>Every member of the University community is expected to maintain the highest standards of academic integrity. A student shall not submit work that is falsified or is not the result of the student’s own effort. Infringement of academic honesty by a student subjects that student to serious penalties, which may include failure on the assignment, failure in the course, suspension from the University or other sanctions (see section 20 of Brandeis University Rights and Responsibilities). Please consult Brandeis University Rights and Responsibilities (see <a href="https://www.brandeis.edu/studentlife/srcs/rightsresponsibilities/index.html" class="uri">https://www.brandeis.edu/studentlife/srcs/rightsresponsibilities/index.html</a>) for all policies and procedures related to academic integrity. Students may be required to submit work to TurnItIn.com software to verify originality. A student who is in a course or assignment should consult the faculty member responsible for that course or assignment before submitting the work. Allegations of alleged academic dishonesty will be forwarded to the Department of Student Rights and Community Standards. Citation and research assistance can be found at Brandeis Library Guides - Citing Sources (<a href="https://guides.library.brandeis.edu/c.php?g=301723" class="uri">https://guides.library.brandeis.edu/c.php?g=301723</a>).</p>
+</div>
+<div id="accommodations" class="section level4">
+<h4>Accommodations</h4>
+<p>Brandeis seeks to welcome and include all students. If you are a student who needs accommodations as outlined in an accommodations letter, please reach out me and present your letter of accommodation as soon as you can. I want to support you.</p>
+<p>In order to provide test accommodations, I need the letter more than 48 hours in advance. I want to provide your accommodations but cannot do so retroactively. If you have questions about documenting a disability or requesting accommodations, please contact Student Accessibility Support (SAS) at 781.736.3470 or <a href="mailto:access@brandeis.edu" class="email">access@brandeis.edu</a>.</p>
+</div>
+</div>
+<div id="course-outline" class="section level2">
+<h2>Course Outline</h2>
+<p><em>Note: the course outline is alive and breathing, so it may evolve spontaneously as the course goes along.</em></p>
+<ol style="list-style-type: decimal">
+<li>Review of Probability and Statistics (Chapters 2 and 3)</li>
+<li>Bivariate Regression (Chapters 4 and 5)</li>
+<li>Multivariate Regression (Chapter 6)</li>
+<li>Hypothesis Testing in Multiple Regression (Chapter 7)</li>
+<li>Nonlinear Regression (Chapter 8)</li>
+</ol>
+<p><strong>——-Midterm 1 about here——-</strong></p>
+<ol start="6" style="list-style-type: decimal">
+<li>Internal and External Validity (Chapter 9)</li>
+<li>Panel Data (Chapter 10)</li>
+<li>Limited Dependent Variable (Chapter 11)</li>
+<li>Instrumental Variables (Chapter 12)</li>
+<li>Experiments and Quasi-experiments (Chapter 13)</li>
+</ol>
+<p><strong>——-Midterm 2 about here——-</strong></p>
+<ol start="11" style="list-style-type: decimal">
+<li>Big data (Chapter 14)</li>
+<li>From 184 to Research</li>
+</ol>
+<p><strong>——-Empirical Project Due——</strong></p>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Courtesy of Dr. Guy McHendry, Creighton University.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>Mask policies are subject to change following state/university masking guidelines and/or public health risk assessments based on the precautionary principle.<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p>There has been extensive research on the return to education on earnings and non-wage outcomes. See, e.g., Card (1999 Handbook of Labor Economics) and Oreopoulos and Salvanes (2011 JEP).<a href="#fnref3" class="footnote-back">↩︎</a></p></li>
+<li id="fn4"><p>Deschenes and Greenstone (2007 AER): the Economics Impacts of Climate Change.<a href="#fnref4" class="footnote-back">↩︎</a></p></li>
+<li id="fn5"><p>Dell, Jones and Olken (2012 AEJ): Temperature Shocks and Economic Growth.<a href="#fnref5" class="footnote-back">↩︎</a></p></li>
+<li id="fn6"><p>Goodman et al. (2019 AEJ) Heat and Learning.<a href="#fnref6" class="footnote-back">↩︎</a></p></li>
+<li id="fn7"><p>Ebenstein (2010 JHR): the “Missing Girls” of China and the Unintended Consequences of the One Child Policy.<a href="#fnref7" class="footnote-back">↩︎</a></p></li>
+<li id="fn8"><p>Jayachandran and Pande (2017 AER): Why Are Indian Children So Short? Anukruti, Bhalotra and Tam (2021 EJ): On the Quantity and Quality of Girls.<a href="#fnref8" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

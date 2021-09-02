@@ -1,0 +1,510 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\author{}
+\date{}
+
+\begin{document}
+
+\hypertarget{syllabus}{%
+\section{Syllabus}\label{syllabus}}
+
+ECON 184B, Econometrics, Fall 2021\\
+Instructor: Prof.~Xinde ``James'' Ji\\
+Email: \href{mailto:xji@brandeis.edu}{\nolinkurl{xji@brandeis.edu}}
+
+\textbf{This is a tentative version of the syllabus, and is subject to
+change without prior notification.}
+
+Teaching/Course Assistants:\\
+Joshua Ye,
+\href{mailto:joshuaye@brandeis.edu}{\nolinkurl{joshuaye@brandeis.edu}}\\
+Frances Hoffen,
+\href{mailto:fhoffen@brandeis.edu}{\nolinkurl{fhoffen@brandeis.edu}}\\
+Sasha Skarboviychuk,
+\href{mailto:sashaskarb@brandeis.edu}{\nolinkurl{sashaskarb@brandeis.edu}}
+
+Lecture: \emph{Lown 002}
+
+\begin{itemize}
+\tightlist
+\item
+  Tuesday/Thursday 2:00-3:30 pm (Section 1)
+\item
+  Tuesday/Thursday 4:00-5:30 pm (Section 2)
+\end{itemize}
+
+Recitation:
+
+\begin{itemize}
+\tightlist
+\item
+  Friday 10:00-11:30 am at \emph{Golding 101}
+\end{itemize}
+
+Office Hours: Wednesday 2:00-5:00 pm or by appointment.
+
+\begin{itemize}
+\tightlist
+\item
+  Physically at my office (\emph{Sachar 1A})
+\item
+  Virtually via Zoom \url{https://brandeis.zoom.us/j/97542193183}
+\end{itemize}
+
+Class Data Hub:
+\href{https://github.com/f1kidd/Econ184}{github.com/f1kidd/Econ184}
+
+\emph{Disclaimer: Email is the preferred communication mechanism, and I
+promise to respond to your email within 24 hours (48 hours on weekends).
+Using alternative communication media (instant messaging) does not
+guarantee a faster response.}
+
+\hypertarget{teaching-modes}{%
+\subsection{Teaching Modes}\label{teaching-modes}}
+
+This class will be taught fully in person unless otherwise notified.
+Automatic recordings of synchronous class sessions will be uploaded to
+LATTE shortly after each lecture. Attendance will not be tracked, and
+you are not required to inform the instructor when you will miss an
+in-person class session.
+
+\hypertarget{covid-19-and-our-classroom1}{%
+\subsection[COVID-19 and Our Classroom]{\texorpdfstring{COVID-19 and Our
+Classroom\footnote{Courtesy of Dr.~Guy McHendry, Creighton University.}}{COVID-19 and Our Classroom}}\label{covid-19-and-our-classroom1}}
+
+We are still very much in a public health crisis. It is important to
+begin from the premise because the pandemic fundamentally shapes what
+this semester looks like, how we inhabit the class, and how we treat
+each other.
+
+Here are some thoughts that I want to share with you upfront:
+
+\begin{itemize}
+\tightlist
+\item
+  We are all in this pandemic together - your actions will affect not
+  only yourself: but also your loved ones, my loved ones, and every one
+  of our community members.
+\item
+  Some of our lives may be relatively unaffected by the pandemic, while
+  others have experienced profound tragedies. Do not make assumptions
+  about others' experiences with the virus.
+\item
+  We need to show compassion and respect to each other. Now more than
+  ever.
+\end{itemize}
+
+\hypertarget{on-symptoms}{%
+\subsubsection{On Symptoms}\label{on-symptoms}}
+
+If you are sick, particularly if you bear any symptoms resembling
+COVID-19 or if you test positive for COVID, do not come to class until
+you are cleared. Lecture recordings will be provided, and I will work
+with you to make sure you can catch up.
+
+\hypertarget{on-vaccines}{%
+\subsubsection{On Vaccines}\label{on-vaccines}}
+
+\begin{itemize}
+\tightlist
+\item
+  I have been fully vaccinated with the Pfizer mRNA (BNT162b2) vaccine.
+\item
+  I will NOT ask whether you have been vaccinated, and you do not have
+  any obligation to tell me your vaccination status.
+\end{itemize}
+
+\hypertarget{on-masks2}{%
+\subsubsection[On Masks]{\texorpdfstring{On
+Masks\footnote{Mask policies are subject to change following
+  state/university masking guidelines and/or public health risk
+  assessments based on the precautionary principle.}}{On Masks}}\label{on-masks2}}
+
+Per university policy (as of 8/18/2021), masks are required for
+synchronous class sessions and for office hours with more than 4 persons
+present. Masks need to cover both your mouth and your nose. Exceptions
+are:
+
+\begin{itemize}
+\tightlist
+\item
+  When you take a brief sip of beverage.
+\item
+  When speaking in a group setting where all others present are masked.
+  The speaker(s) may lower or remove their mask while speaking and then
+  raise or replace their mask to allow others to speak.
+\item
+  Other exceptions/accommodations approved by the instructor.
+\end{itemize}
+
+\hypertarget{overview}{%
+\subsection{Overview}\label{overview}}
+
+Is your Brandeis education worth it?\footnote{There has been extensive
+  research on the return to education on earnings and non-wage outcomes.
+  See, e.g., Card (1999 Handbook of Labor Economics) and Oreopoulos and
+  Salvanes (2011 JEP).} How much impact does climate change have on
+agriculture\footnote{Deschenes and Greenstone (2007 AER): the Economics
+  Impacts of Climate Change.}, the economy\footnote{Dell, Jones and
+  Olken (2012 AEJ): Temperature Shocks and Economic Growth.}, or your
+PSAT score?\footnote{Goodman et al.~(2019 AEJ) Heat and Learning.} What
+explains the sex ratio imbalance in East Asia\footnote{Ebenstein (2010
+  JHR): the ``Missing Girls'' of China and the Unintended Consequences
+  of the One Child Policy.} and Southeastern Asia\footnote{Jayachandran
+  and Pande (2017 AER): Why Are Indian Children So Short? Anukruti,
+  Bhalotra and Tam (2021 EJ): On the Quantity and Quality of Girls.}?
+Fascinating questions as they are, we are not here to seek answers to
+these questions directly (\emph{you are welcomed to check out relevant
+courses to these questions}). Instead, you will be learning the methods
+and techniques that allow you to answer these questions or any other
+empirical questions that fascinate you.
+
+Econometrics is the backbone of economics as a social science
+discipline: it offers the scientific rigor just like experiments to
+physics, chemistry, and medical sciences. Albeit, the ``experiments''
+are set out in the real world, and econometrics provides a toolbox to
+learn from those experiments. Equally importantly, econometrics provides
+a framework to think about empirical problems in a rigorous way - this
+credibility revolution has certainly spilled over to other fields:
+e.g.~political science, public health, psychology, business, and
+marketing.
+
+In this class, you will be primed with the theoretical and the applied
+aspects of econometrics. You will learn the intuitions and statistical
+constructs behind various econometric tools; you will gain hands-on
+experience conducting econometric analysis using modern technology; and
+you will be able to read, interpret, and formulate empirical studies
+using econometric tools.
+
+\hypertarget{learning-goals}{%
+\subsection{Learning goals}\label{learning-goals}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Know the math (with paper and pencil)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Understand the statistical properties of econometric estimation
+    (expectations, hypothesis testing, etc.)
+  \item
+    Understand the motivation and assumptions of common econometric
+    tools (e.g., linear regression, nonlinear regression, instrumental
+    variables regression, panel models, etc.)
+  \end{itemize}
+\item
+  Learn to code (with R)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Import, process, and manipulate data
+  \item
+    Implement common econometric tools and interpret software outputs
+  \item
+    Perform Monte Carlo simluations to evaluate properties of
+    econometric tools
+  \end{itemize}
+\item
+  Explain the world (with a critical mind)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Critically evaluate empirical studies using econometric and
+    statistical tools
+  \item
+    Frame real-world problems into appropriate econometric models and
+    provide meaningful answers
+  \end{itemize}
+\end{enumerate}
+
+\hypertarget{prerequisites}{%
+\subsection{Prerequisites}\label{prerequisites}}
+
+Prerequisites: Econ 80a and Econ 83a; Econ 80a may be taken
+concurrently.
+
+\hypertarget{textbooks}{%
+\subsection{Textbooks}\label{textbooks}}
+
+Required textbook: James H. Stock and Mark W. Watson, Introduction to
+Econometrics (4th edition), Pearson/Addison Wesley, 2019.
+
+\begin{itemize}
+\tightlist
+\item
+  You can use the 3rd edition to study but references to
+  chapter/exercise numbers correspond to the 4th edition.
+\end{itemize}
+
+If you are having difficulty purchasing course materials, please make an
+appointment with your Student Financial Services or Academic Services
+advisor to discuss possible funding options and/or textbook
+alternatives.
+
+\textbf{Readings}\\
+Additional readings will be posted on LATTE as the class goes along.
+
+\hypertarget{grading}{%
+\subsection{Grading}\label{grading}}
+
+\begin{itemize}
+\tightlist
+\item
+  In-class exercises: 10\%
+
+  \begin{itemize}
+  \tightlist
+  \item
+    We will be solving most in-class exercises together. Gradings are
+    based on correctness, but you should be able to get the correct
+    answer with active participation in class.
+  \end{itemize}
+\item
+  Problem sets: 20\%
+
+  \begin{itemize}
+  \tightlist
+  \item
+    All problem sets are individual. There will be \textasciitilde7
+    problems sets throughout the semester.
+  \item
+    Only electronic submission is accepted. Late submissions will be
+    accepted with a 10\% penalty each day.
+  \item
+    You need to submit both the compiled pdf/html file and the source
+    code. You will receive a 5\% bonus if your code is entirely
+    reproducible with minimal altercation (e.g., package installation).
+  \end{itemize}
+\item
+  Midterm 1: 25\%*
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Closed book. Pen and calculator.
+  \end{itemize}
+\item
+  Midterm 2: 25\%*
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Semi-cumulative (you will need to use knowledge from the first half
+    of the course). Closed book. Pen and calculator.
+  \end{itemize}
+\item
+  Empirical project assignment: 20\%
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Instructions to follow.
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{class-policies}{%
+\subsection{Class Policies}\label{class-policies}}
+
+\hypertarget{recitation}{%
+\paragraph{Recitation}\label{recitation}}
+
+Recitation is strongly encouraged but not mandatory. No graded parts
+will be assigned during recitation time. That said, recitation is an
+important component of the class where we commit dedicated times for you
+to strengthen your grasp on R coding, problem sets, and prepare for
+exams.
+
+\hypertarget{computer-and-equipments}{%
+\paragraph{Computer and Equipments}\label{computer-and-equipments}}
+
+You are expected to bring a personal computer to most lecture sessions,
+as we will be completing in-class exercises. You are expected NOT to use
+your computer to do anything unrelated to the class. Doing so not only
+hinders your own learning but also potentially distracts your
+colleagues. I reserve the right to place you in the last row of the
+classroom or ask you to leave the classroom.
+
+You will need to have the following software installed on your computer.
+These softwares are available across platforms (Windows, Mac, Linux) and
+free of charge.
+
+\begin{itemize}
+\tightlist
+\item
+  R (separate from RStudio)
+\item
+  Rstudio
+\end{itemize}
+
+If you encounter any difficulties with pieces of equipment that hinder
+your learning, please reach out to me immediately, and I will do my best
+to help. Additionally, Brandeis offers student emergency funds to
+students in need. Email
+\href{mailto:emergencyfunds@brandeis.edu}{\nolinkurl{emergencyfunds@brandeis.edu}}
+for more information.
+
+\hypertarget{credit-hours}{%
+\paragraph{Credit Hours}\label{credit-hours}}
+
+Success in this four-credit course is based on the expectation that
+students will spend a minimum of nine hours of study time per week in
+preparation for class (readings, papers, discussion sections,
+preparation for exams, etc.
+
+\hypertarget{academic-honesty}{%
+\paragraph{Academic Honesty}\label{academic-honesty}}
+
+Every member of the University community is expected to maintain the
+highest standards of academic integrity. A student shall not submit work
+that is falsified or is not the result of the student's own effort.
+Infringement of academic honesty by a student subjects that student to
+serious penalties, which may include failure on the assignment, failure
+in the course, suspension from the University or other sanctions (see
+section 20 of Brandeis University Rights and Responsibilities). Please
+consult Brandeis University Rights and Responsibilities (see
+\url{https://www.brandeis.edu/studentlife/srcs/rightsresponsibilities/index.html})
+for all policies and procedures related to academic integrity. Students
+may be required to submit work to TurnItIn.com software to verify
+originality. A student who is in a course or assignment should consult
+the faculty member responsible for that course or assignment before
+submitting the work. Allegations of alleged academic dishonesty will be
+forwarded to the Department of Student Rights and Community Standards.
+Citation and research assistance can be found at Brandeis Library Guides
+- Citing Sources
+(\url{https://guides.library.brandeis.edu/c.php?g=301723}).
+
+\hypertarget{accommodations}{%
+\paragraph{Accommodations}\label{accommodations}}
+
+Brandeis seeks to welcome and include all students. If you are a student
+who needs accommodations as outlined in an accommodations letter, please
+reach out me and present your letter of accommodation as soon as you
+can. I want to support you.
+
+In order to provide test accommodations, I need the letter more than 48
+hours in advance. I want to provide your accommodations but cannot do so
+retroactively. If you have questions about documenting a disability or
+requesting accommodations, please contact Student Accessibility Support
+(SAS) at 781.736.3470 or
+\href{mailto:access@brandeis.edu}{\nolinkurl{access@brandeis.edu}}.
+
+\hypertarget{course-outline}{%
+\subsection{Course Outline}\label{course-outline}}
+
+\emph{Note: the course outline is alive and breathing, so it may evolve
+spontaneously as the course goes along.}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Review of Probability and Statistics (Chapters 2 and 3)
+\item
+  Bivariate Regression (Chapters 4 and 5)
+\item
+  Multivariate Regression (Chapter 6)
+\item
+  Hypothesis Testing in Multiple Regression (Chapter 7)
+\item
+  Nonlinear Regression (Chapter 8)
+\end{enumerate}
+
+\textbf{-------Midterm 1 about here-------}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{5}
+\tightlist
+\item
+  Internal and External Validity (Chapter 9)
+\item
+  Panel Data (Chapter 10)
+\item
+  Limited Dependent Variable (Chapter 11)
+\item
+  Instrumental Variables (Chapter 12)
+\item
+  Experiments and Quasi-experiments (Chapter 13)
+\end{enumerate}
+
+\textbf{-------Midterm 2 about here-------}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{10}
+\tightlist
+\item
+  Big data (Chapter 14)
+\item
+  From 184 to Research
+\end{enumerate}
+
+\textbf{-------Empirical Project Due------}
+
+\end{document}

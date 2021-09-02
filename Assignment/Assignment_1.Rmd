@@ -3,7 +3,7 @@ title: "Econ 184b, Econometrics, Assignment 1"
 output: html_document
 ---
 
-Raw Rmd files for this assignment are available at: 
+The raw .rmd file for this assignment are available at: https://raw.githubusercontent.com/f1kidd/Econ184/main/Assignment/Assignment_1.Rmd
 
 Note: For the math problems, you can either (1) type your solution and save it as a PDF file or (2) write your solution on paper, scan it and make it into a legible PDF file. TAs can decide, at their discretion, that the submitted file is illegible and thus give zero credit to a question or the entire problem set. If you type your solution, you will get **a bonus equal to 5% of your performance** on the problem set. No credit will be given if you only report the final answers without showing intermediate steps whenever appropriate. 
 

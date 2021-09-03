@@ -21,7 +21,7 @@ The following table gives the joint probability distribution between employment 
 | College grads (X=1) |0.009|0.389|
 
 a. Compute E(Y)
-b. The unemployment rate is the fraction of the labor force that is unemployed. Which one of the following E(X), 1-E(X),E(X)$\times$E(Y),E(X$\times$Y), is the unemployment rate? Explain. 
+b. The unemployment rate is the fraction of the labor force that is unemployed. Which one of the following E(X), E(Y), 1-E(X), 1-E(Y), E(X)*E(Y), E(XY), is the unemployment rate? Explain. 
 c. Calculate E(Y|X=1) and E(Y|X=0)
 d. Calculate the unemployment rate for (i) college graduates, and (ii) non-college graduates.
 e. A randomly selected number of this population reports being unemployed. What is the probability that this worker is a college graduate? 

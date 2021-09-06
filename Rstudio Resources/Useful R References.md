@@ -9,8 +9,11 @@ Econ 184B, Econometrics, Brandeis University
 ### Playing around with R and RStudio
 * Base R Cheatsheet: https://iqss.github.io/dss-workshops/R/Rintro/base-r-cheat-sheet.pdf
 * RStudio IDE Cheatsheet: https://github.com/rstudio/cheatsheets/blob/master/rstudio-ide.pdf
-* RMarkddown Cheatsheet: https://github.com/rstudio/cheatsheets/blob/master/rmarkdown.pdf
 * dplyr Cheatsheet: https://wegweisr.haim.it/Cheatsheets/dplyr.pdf
+
+### For Rmarkdown 
+* RMarkddown Cheatsheet: https://github.com/rstudio/cheatsheets/blob/master/rmarkdown.pdf
+* Mathematics in RMarkdown: https://rpruim.github.io/s341/S19/from-class/MathinRmd.html
 
 ### For the geeks
 * R Markdown Cookbook: https://bookdown.org/yihui/rmarkdown-cookbook/r-code.html

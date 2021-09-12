@@ -39,7 +39,8 @@ b. Use simulations (10,000 repetitions) to compute $P(30\leq Y \leq 60)$. (Hint:
 
 ```{r}
 # draw 10,000 number from the above distribution and store it.
-
+a = 1 
+a
 # count the number of draws that falls in the given range. 
 ```
 

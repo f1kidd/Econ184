@@ -169,6 +169,7 @@ pre code {
 
 
 <p>The raw .rmd file for this assignment are available at: <a href="https://raw.githubusercontent.com/f1kidd/Econ184/main/Assignment/Assignment_1.Rmd" class="uri">https://raw.githubusercontent.com/f1kidd/Econ184/main/Assignment/Assignment_1.Rmd</a></p>
+<p>And the answer key at: <a href="https://raw.githubusercontent.com/f1kidd/Econ184/main/Answer%20Keys/Assignment_1_Key.Rmd" class="uri">https://raw.githubusercontent.com/f1kidd/Econ184/main/Answer%20Keys/Assignment_1_Key.Rmd</a></p>
 <p>Note: For the math problems, you can either (1) type your solution and save it as a PDF file or (2) write your solution on paper, scan it and make it into a legible PDF file. TAs can decide, at their discretion, that the submitted file is illegible and thus give zero credit to a question or the entire problem set. If you type your solution, you will get <strong>a bonus equal to 5% of your performance</strong> on the problem set. No credit will be given if you only report the final answers without showing intermediate steps whenever appropriate.</p>
 <p>For the programming problems, you need to submit both the compiled pdf/html file and the RMarkdown (.rmd) file on LATTE. You will get <strong>an additional bonus equal to 5% of your performance</strong> if your RMarkdown file is completely reproducible with minimal altercation (install packages, etc.). You need to explicitly write out your answers - just showing programming outputs will receive zero credit.</p>
 <p>You will be receiving a total of 10% bonus if you submit one single compiled pdf/markdown file through markdown.</p>
@@ -211,8 +212,8 @@ pre code {
 <li><p><span class="math display">\[E(Y|X=1) = \sum_{y=0,1} y * \frac{Pr(X=1,Y=y)}{Pr(X=1)}\]</span> = <del>0 * 0.009/(0.009+0.389)</del> + <span class="math inline">\(1*0.389/(0.009+0.389)=0.977\)</span></p>
 <p><span class="math display">\[E(Y|X=0) = 1*0.576/(0.576+0.026) = 0.957\]</span></p></li>
 <li><ol style="list-style-type: lower-roman">
-<li>0.009/(0.009+0.389) = 1.5%</li>
-<li>0.026/(0.026+0.576) = 4.3%</li>
+<li>0.009/(0.009+0.389) = 2.26%</li>
+<li>0.026/(0.026+0.576) = 4.32%</li>
 </ol></li>
 <li><p>0.009/(0.009+0.026) = 0.257</p></li>
 <li><p>Independence means that P(Y=a|X=b) = P(Y=a) for any a <span class="math inline">\(\in\)</span> [0,1] and b <span class="math inline">\(\in\)</span>[0,1]. In English, knowing a person is a college grad or not does not help predict whether that person is employed.</p></li>
@@ -241,15 +242,21 @@ pre code {
 
 P1 = pnorm(50, mean =30, sd = 10)
 P2 = pnorm(20, mean =30, sd = 10)
-p = P1 - P2
-p</code></pre>
+p_theoretical = P1 - P2
+p_theoretical</code></pre>
 <pre><code>## [1] 0.8185946</code></pre>
+<ol style="list-style-type: lower-alpha">
+<li>The theoretical probability is 0.8185946.</li>
+</ol>
 <pre class="r"><code>#b.
 set.seed(666)
 x = rnorm(10000, mean = 30, sd = 10)
 p = sum(x&lt;=60&amp;x&gt;=30)/10000 
 p</code></pre>
 <pre><code>## [1] 0.5092</code></pre>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>The empirical probability of <span class="math inline">\(P(30\leq Y \leq 60)\)</span> is 0.509. (Note: the theoretical probability is 0.499.)</li>
+</ol>
 </div>
 <div id="question-4" class="section level3">
 <h3>Question 4:</h3>
@@ -261,9 +268,9 @@ p</code></pre>
 <ol style="list-style-type: lower-alpha">
 <li><p>Verify the mean and the standard deviation of the above distribution</p></li>
 <li><p>Plot the distribution of means for those 1000 repetitions</p></li>
-<li><p><span class="math display">\[\mu = 7*0.7+77*0.2+777*0.1 = 98\]</span> <span class="math display">\[var = (98-7)^2*0.7 + (98-77)^2*0.2 + (98-777)^2*0.1 = 51989\]</span> <span class="math display">\[\sigma = sd = \sqrt{var} = 228.01\]</span></p></li>
+<li><p>There are two ways to do this. Using math, we have: <span class="math display">\[\mu = 7*0.7+77*0.2+777*0.1 = 98\]</span> <span class="math display">\[var = (98-7)^2*0.7 + (98-77)^2*0.2 + (98-777)^2*0.1 = 51989\]</span> <span class="math display">\[\sigma = sd = \sqrt{var} = 228.01\]</span></p></li>
 </ol>
-<p>Your code could look like the following:</p>
+<p>And using programming, we have:</p>
 <pre class="r"><code># for(i in 1:1000){
   # draw one such sample with N=1000
   # store the mean of the sample
@@ -287,6 +294,10 @@ mean_mean</code></pre>
 <pre class="r"><code>mean_sd = mean(sd_store)
 mean_sd</code></pre>
 <pre><code>## [1] 227.2286</code></pre>
+<p>The empirical mean is 97.59, and the empirical standard deviation is 227.23.</p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>The plot looks like the following:</li>
+</ol>
 <pre class="r"><code># plot your data:
   # the hist() function is the easiest way to do so.
   # we will learn more sophisticated plotting skills later.

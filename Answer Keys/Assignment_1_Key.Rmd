@@ -5,11 +5,15 @@ output: html_document
 
 The raw .rmd file for this assignment are available at: https://raw.githubusercontent.com/f1kidd/Econ184/main/Assignment/Assignment_1.Rmd
 
+And the answer key at: https://raw.githubusercontent.com/f1kidd/Econ184/main/Answer%20Keys/Assignment_1_Key.Rmd
+
 Note: For the math problems, you can either (1) type your solution and save it as a PDF file or (2) write your solution on paper, scan it and make it into a legible PDF file. TAs can decide, at their discretion, that the submitted file is illegible and thus give zero credit to a question or the entire problem set. If you type your solution, you will get **a bonus equal to 5% of your performance** on the problem set. No credit will be given if you only report the final answers without showing intermediate steps whenever appropriate. 
 
 For the programming problems, you need to submit both the compiled pdf/html file and the RMarkdown (.rmd) file on LATTE. You will get **an additional bonus equal to 5% of your performance** if your RMarkdown file is completely reproducible with minimal altercation (install packages, etc.). You need to explicitly write out your answers - just showing programming outputs will receive zero credit. 
 
 You will be receiving a total of 10% bonus if you submit one single compiled pdf/markdown file through markdown. 
+
+
 
 
 ### Question 1: 
@@ -35,8 +39,8 @@ c. $$E(Y|X=1) = \sum_{y=0,1} y * \frac{Pr(X=1,Y=y)}{Pr(X=1)}$$
 = ~~0 * 0.009/(0.009+0.389)~~ + $1*0.389/(0.009+0.389)=0.977$
 
    $$E(Y|X=0) = 1*0.576/(0.576+0.026) = 0.957$$
-d. (i) 0.009/(0.009+0.389) = 1.5%
-   (ii) 0.026/(0.026+0.576) = 4.3%
+d. (i) 0.009/(0.009+0.389) = 2.26%
+   (ii) 0.026/(0.026+0.576) = 4.32%
 e. 0.009/(0.009+0.026) = 0.257
 f. Independence means that P(Y=a|X=b) = P(Y=a) for any a $\in$ [0,1] and b $\in$[0,1]. In English, knowing a person is a college grad or not does not help predict whether that person is employed.
 
@@ -62,7 +66,6 @@ Y follows normal distribution with mean=30, variance=100.
 a. Compute the theoretical probability of $P(20\leq Y \leq 50)$. (Hint: the "pnorm" function returns the distribution function of the normal distribution.)
 b. Use simulations (10,000 repetitions) to compute $P(30\leq Y \leq 60)$. (Hint: the rnorm function returns random numbers from the normal distribution. Your code could look like the following:)
 
-
 ```{r}
 # draw 10,000 number from the above distribution and store it.
 
@@ -71,9 +74,12 @@ b. Use simulations (10,000 repetitions) to compute $P(30\leq Y \leq 60)$. (Hint:
 
 P1 = pnorm(50, mean =30, sd = 10)
 P2 = pnorm(20, mean =30, sd = 10)
-p = P1 - P2
-p
+p_theoretical = P1 - P2
+p_theoretical
+```
+a. The theoretical probability is `r p_theoretical`. 
 
+```{r}
 #b.
 set.seed(666)
 x = rnorm(10000, mean = 30, sd = 10)
@@ -81,6 +87,7 @@ p = sum(x<=60&x>=30)/10000
 p
 
 ```
+b. The empirical probability of $P(30\leq Y \leq 60)$ is `r round(p,3)`. (Note: the theoretical probability is 0.499.)
 
 ### Question 4: 
 From the class example, we know that the distribution with possible values of X 7, 77, and 777, and the following probability:
@@ -94,12 +101,12 @@ has a mean $\mu =98$, standard deviation $\sigma =228.01$. Use 1000 repetitions,
 a. Verify the mean and the standard deviation of the above distribution
 b. Plot the distribution of means for those 1000 repetitions
 
-a.
+a. There are two ways to do this. Using math, we have:
 $$\mu = 7*0.7+77*0.2+777*0.1 = 98$$
 $$var = (98-7)^2*0.7 + (98-77)^2*0.2 + (98-777)^2*0.1 = 51989$$
 $$\sigma = sd = \sqrt{var} = 228.01$$
 
-Your code could look like the following:
+And using programming, we have:
 ```{r}
 # for(i in 1:1000){
   # draw one such sample with N=1000
@@ -123,6 +130,9 @@ mean_mean
 mean_sd = mean(sd_store)
 mean_sd
 ```
+The empirical mean is `r round(mean_mean,2)`, and the empirical standard deviation is `r round(mean_sd,2)`.
+
+b. The plot looks like the following:
 
 ```{r,fig.keep="high"}
 # plot your data:

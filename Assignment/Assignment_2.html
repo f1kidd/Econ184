@@ -197,7 +197,7 @@ pre code {
 <li>Find the probability that <span class="math inline">\(\bar{Y} &lt; 10\)</span>.</li>
 <li>Using 10,000 repetitions, verify your answer in part (a) using R. Your code could look like the following:</li>
 </ol>
-<pre><code>N = 10000
+<pre class="r"><code>N = 10000
 n = 27
 ybar_store = c()
 for(i in 1:N){
@@ -210,11 +210,11 @@ for(i in 1:N){
 <h3>Question 4</h3>
 <p>Use the <em>Boston</em> data set in the MASS library, which contains census-tract-level housing values in the suburbs of Boston in 1973. Documentations for the dataset can be found by typing <em>“Boston”</em> in the help session after you import the package <em>“MASS”</em>.</p>
 <ol style="list-style-type: lower-alpha">
-<li>Plot a histogram of median owner-occupied housing value in the area.</li>
+<li>Plot a histogram of median owner-occupied housing value (<em>medv</em>) in the area.</li>
 <li>Calculate the mean, median, minimum, and maximum housing value in the Boston area</li>
-<li>Are housing values adjacent the Charles River higher? Explain.</li>
-<li>Plot the bivariate relationship between the property tax rate and the pupil-teacher ratio. Are they correlated?</li>
-<li>Create an indicator variable showing whether the tract is above or below median crime rate of the city. What is the conditional variance of median housing values for tracts above the median crime rate? Below the median crime rate?</li>
+<li>Are housing values adjacent the Charles River (<em>chas</em>) higher on average? Explain.</li>
+<li>Plot the bivariate relationship between the property tax rate and the pupil-teacher ratio (<em>ptratio</em>). Are they correlated?</li>
+<li>Create an indicator variable showing whether the tract is above or below median crime rate of the city (<em>crim</em>). What is the conditional variance of median housing values for tracts above the median crime rate? Below the median crime rate?</li>
 <li>If one wish to explore the bivariate relationship between crime rate and housing value in a regression framework. Is the model homoskedastic? Explain.</li>
 </ol>
 <p>Your code could look like the following (where plotting is done through the <em>ggplot2</em> package:</p>

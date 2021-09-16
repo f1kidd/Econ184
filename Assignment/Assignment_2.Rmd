@@ -50,18 +50,18 @@ for(i in 1:N){
 
 ### Question 4
 
-Use the *Boston* data set in the MASS library, which contains census-tract-level housing values in the suburbs of Boston in 1973. Documentations for the dataset can be found by typing *"Boston"* in the help session after you import the package *"MASS"*. 
+Use the *Boston* data set in the MASS library, which contains census-tract-level housing values in the suburbs of Boston in 1973. **Documentations for the dataset can be found by typing *"Boston"* in the help session after you import the package *"MASS"*.** 
 
-a. Plot a histogram of median owner-occupied housing value in the area. 
+a. Plot a histogram of median owner-occupied housing value (*medv*) in the area. 
 b. Calculate the mean, median, minimum, and maximum housing value in the Boston area
-c. Are housing values adjacent the Charles River higher? Explain. 
-d. Plot the bivariate relationship between the property tax rate and the pupil-teacher ratio. Are they correlated?
-e. Create an indicator variable showing whether the tract is above or below median crime rate of the city. What is the conditional variance of median housing values for tracts above the median crime rate? Below the median crime rate?
+c. Are housing values adjacent the Charles River (*chas*) higher on average? Explain. 
+d. Plot the bivariate relationship between the property tax rate and the pupil-teacher ratio (*ptratio*). Are they correlated?
+e. Create an indicator variable showing whether the tract is above or below median crime rate of the city (*crim*). What is the conditional variance of median housing values for tracts above the median crime rate? Below the median crime rate?
 f. If one wish to explore the bivariate relationship between crime rate and housing value in a regression framework. Is the model homoskedastic? Explain. 
 
 Your code could look like the following (where plotting is done through the *ggplot2* package:
 
-```{r}
+```{r,message=F,warning=F}
 library(MASS)
 library(ggplot2)
 data = Boston

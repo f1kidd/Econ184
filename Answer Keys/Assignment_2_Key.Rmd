@@ -13,7 +13,10 @@ For the programming problems, you need to submit both the compiled pdf/html file
 You will be receiving a total of 15% bonus if you submit one single pdf/html compiled directly from Rmarkdown, along with the .rmd file. 
 
 
-### Question 1: 
+### Question 1: 5 points each 
+
+Take off 4 points if they do pnorm in r and do not do the z score by hand. (i.e print("Y∼N(1,4). Find P(Y ≤ 3).")
+print(pnorm(q=3,mean=1,sd=sqrt(4))))
 
 Compute the following probabilities. Write your final answer in terms of $\Phi$ (the cdf for the standard normal distribution). For example, if your final answer is $1-\Phi(0.3254)$, then that’s it and you do not need to find exactly what number is $\Phi(0.3254)$ from the Z-table / using qnorm. Of course, you still need to show the intermediate computations, formulas or processes.
 
@@ -31,7 +34,9 @@ c. $$ P(40\leq Y <52) = P(Y<52) - p(Y<40) = \Phi(\frac{52-50}{5})-\Phi(\frac{40-
 
 d. $$ Pr(6 \leq Y \leq 8) = P(Y \leq 8) - P(Y<6) = \Phi(\frac{8-5}{\sqrt{2}}) - \Phi(\frac{6-5}{\sqrt{2}}) = \Phi(\frac{3\sqrt{2}}{2}) - \Phi(\frac{\sqrt{2}}{2}) $$
 
-### Question 2:
+### Question 2: 20 points total, 10 points each 
+if students do the 0 and 1 the other way around that is fine, give full marks. Variance will be the same, phat will be 1 - phat, confidence interval will be 1 - c.i. on the answer key 
+
 In a survey of 400 likely voters, 215 responded that they would vote for the incumbent, and 185 responded that they would vote for the challenger. Let $p$ denote the fraction of all likely voters who preferred the incumbent at the time of the survey and let $\hat{p}$ be the fraction of survey respondents who preferred the incumbent.
 
 a. Construct a 95% confidence interval for $p$.
@@ -59,7 +64,7 @@ upper = phat+2.58*sqrt(s2/400)
 ```
 The 99% confidence interval is just by changing 1.96 to 2.58, which is [`r round(lower,3)`, `r round(upper,3)`]. 
 
-### Question 3:
+### Question 3: 20 points, 10 each 
 
 Let $Y_1,...,Y_n$ be i.i.d. random variables following N(8,4), where *n=27*. Let $\bar{Y}$ be the sample average. 
 
@@ -93,36 +98,38 @@ b.
 N = 10000
 n = 27
 ybar_store = c()
+count = 0
 
 for(i in 1:N){
   # sample from N(8,4) with a sample size n=27
   # store the sample mean
   y = rnorm(27, mean = 8, sd = 2)
-  ybar = mean(y)
-  ybar_store = c(ybar_store,ybar)
+  if (mean(y)<10){
+    count = count+1
+  }
 }
-# calculate the proportion that the sample mean is less than 10. 
-p = sum(ybar_store<10)/N
-p
 
+p = count/N
+p
+# calculate the proportion that the sample mean is less than 10. 
 ```
 The empirical probability that $\bar{Y}<10$ is `r p`.
 
-### Question 4
+### Question 4: 5 points each, 30 total 
 
-Use the *Boston* data set in the MASS library, which contains census-tract-level housing values in the suburbs of Boston in 1973. **Documentations for the dataset can be found by typing *"Boston"* in the help session after you import the package *"MASS"*.** 
+Use the *Boston* data set in the MASS library, which contains census-tract-level housing values in the suburbs of Boston in 1973. Documentations for the dataset can be found by typing *"Boston"* in the help session after you import the package *"MASS"*. 
 
-a. Plot a histogram of median owner-occupied housing value (*medv*) in the area. 
+a. Plot a histogram of median owner-occupied housing value in the area. 
 b. Calculate the mean, median, minimum, and maximum housing value in the Boston area
-c. Are housing values adjacent the Charles River (*chas*) higher on average? Explain. 
-d. Plot the bivariate relationship between the property tax rate and the pupil-teacher ratio (*ptratio*). Are they correlated?
-e. Create an indicator variable showing whether the tract is above or below median crime rate of the city (*crim*). What is the conditional variance of median housing values for tracts above the median crime rate? Below the median crime rate?
+c. Are housing values adjacent the Charles River higher? Explain. 
+d. Plot the bivariate relationship between the property tax rate and the pupil-teacher ratio. Are they correlated?
+e. Create an indicator variable (taking the value of 0 and 1) showing whether the tract is above or below median crime rate of the city. What is the conditional variance of median housing values for tracts above the median crime rate? Below the median crime rate?
 f. If one wish to explore the bivariate relationship between crime rate and housing value in a regression framework. Is the model homoskedastic? Explain. 
 
 Your code could look like the following (where plotting is done through the *ggplot2* package:
 
 ### a.
-```{r,message=F,warning=F}
+```{r}
 library(MASS)
 library(ggplot2)
 library(tidyverse)
@@ -159,14 +166,9 @@ We find that tracts adjacent to the Charles has a mean housing value of $28,400,
 ```{r}
 ggplot(data=data)+geom_point(aes(tax,ptratio))+theme_economist()
 ```
-Property tax rate and pupil-teacher ratio are clearly correlated through visual examination. To formally test for the correlation between the two:
-```{r}
-cor(data$ptratio,data$tax)
-```
-which shows a correlation coefficient of `r round(cor(data$ptratio,data$tax),3)`.
 
 ## e.
-First, create an indicator variable. There are multiple ways to do this. Demonstration is provided through the mutate function:
+First, create an indicator variable. There are multiple ways to do this: demonstration through the mutate function:
 ```{r}
 data %<>% mutate(crim_binary = ifelse(crim>=median(crim),1,0))
 ```
@@ -179,10 +181,10 @@ Variance of median housing value in tracts with below-median crime rate: 52.3. A
 ## f.
 The model is not homoskedastic (heteroskedastic), because the variance almost doubled for tracts with above median crime rate. 
 
-Formally, this can be done using an F-test, which rejects the null hypothesis that the two variances are the same with 95% confidence. 
+Formally, this can be done using an F-test, which rejects the null hypothesis at 95% confidence that the two variances are not the same. 
 
 ```{r}
-var.test(x=data$medv[data$crim_binary==0],y=data$medv[data$crim_binary==1])
+
 ```
 
 

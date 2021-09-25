@@ -1,0 +1,56 @@
+---
+title: "In class exercise 4 Answer Key"
+output: html_document
+---
+## In-class Exercise #4
+
+* Group 1: a random sample of students who smoke, n=47
+* Group 2: a random sample of students who do not smoke, n=189 
+* Goal: whether smokers have significantly different pulse rates
+
+Report the t-statistic, p-value, and the conclusion from the test.
+
+# Load the data
+```{r}
+knitr::opts_chunk$set(message=F,warning=F)
+```
+
+```{r}
+require(tidyverse)
+require(magrittr)
+require(MASS)
+data = survey # students at the University of Adelaide
+data %<>% filter(!is.na(Smoke)) # there is a missing value for the variable "Smoke"
+data %<>% mutate(Smoke_binary=ifelse(Smoke=="Never",F,T)) # create a binary value of smokers
+```
+Now, we wish to know whether smokers have different pulse rates. We first calculate the conditional means and the sd's for the two groups. Need to removing missing values in Pulse first:
+```{r}
+test_stat = data %>% filter(!is.na(Pulse)) %>% group_by(Smoke_binary) %>% summarize(mean=mean(Pulse), sd=sd(Pulse),n=length(Pulse))
+test_stat
+```
+Now the actual test statistic is given by **(Note: students need to work out the t-statistic, either by using the raw numbers or by the following code chunk in order to get full credit)**: 
+```{r,echo=T, eval=T}
+delta_mu = test_stat$mean[1] - test_stat$mean[2]
+se = sqrt((test_stat$sd[1]^2/test_stat$n[1] + test_stat$sd[2]^2/test_stat$n[2]))
+t_stat = delta_mu / se
+```
+
+```{r}
+t_stat
+```
+
+And the p-value: $2\Phi(-|t|)$, assuming large sample
+```{r}
+pnorm(-abs(t_stat)) * 2
+```
+
+(To be more precise, we should use the t-distribution with df=min(n,m)):
+```{r,eval=F}
+pt(-abs(t_stat),df=min(test_stat$n)) * 2
+```
+
+And here's R's t.test procedure
+
+```{r}
+t.test(Pulse~Smoke_binary,data=data %>% filter(!is.na(Pulse)))
+```

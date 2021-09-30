@@ -1,8 +1,8 @@
 ---
 title: "Econ 184b, Econometrics, Assignment 3"
 output:
-  html_document: default
   pdf_document: default
+  html_document: default
 ---
 
 ```{r,echo=F}
@@ -35,7 +35,7 @@ A survey of 328 registered voters is conducted, and the voters are asked to choo
 You are interested in constructing a confidence interval for p. Someone suggested that you can use $[\hat{p}-0.1,\hat{p}+0.1]$ as a confidence interval.
 
 a. What is the coverage probability of this confidence interval if p=0.6? (What is $p(\hat{p}-0.1 \leq p \leq \hat{p}+0.1)$ when p=0.6?)
-b. If you observe that $\hat{p}=0.5$, can you reject the hypothesis that $H_1: p \neq 0.6$? 
+b. If you observe that $\hat{p}=0.5$, can you reject the hypothesis that $H_0: p = 0.6$? 
 
 ### Question 2: 
 
@@ -48,7 +48,7 @@ a. construct a 95% confidence intervals for $\mu_1-\mu_2$
 b. can we conclude that the two groups (defined by the reading score) have different math scores? Use 1% significance level. Please write out the null and alternative hypothesis, and use both the t-test and the p-value approach to test the hypothesis. 
 
 ### Question 3:
-A professor decides to run an experiment to measure the effect of time pressure on final exam scores. He gives each of the 400 students in his course the same final exam, but some students have 90 minutes to complete the exam, while others have 120 minutes. Each student is randomly assigned one of the examination times, based on the flip of a coin. Let $Y_i$ denote the number of points scored on the exam by the i-th student. Let $X_i$ measure the amount of time that the student has to complete the exam: $X_i=1$ means "90 minutes" and $X_i=0$ means "120 minutes". Consider the regression model $Y_i = \beta_0 + \beta_1X_i + u_i$. Suppose that we estimated that $\hat{beta}_1=10$. Consider the following statements.
+A professor decides to run an experiment to measure the effect of time pressure on final exam scores. He gives each of the 400 students in his course the same final exam, but some students have 90 minutes to complete the exam, while others have 120 minutes. Each student is randomly assigned one of the examination times, based on the flip of a coin. Let $Y_i$ denote the number of points scored on the exam by the i-th student. Let $X_i$ measure the amount of time that the student has to complete the exam: $X_i=1$ means "90 minutes" and $X_i=0$ means "120 minutes". Consider the regression model $Y_i = \beta_0 + \beta_1X_i + u_i$. Suppose that we estimated that $\hat{\beta}_1=10$. Consider the following statements.
 
 (1) On average, students who get 90 minutes score 10 points lower than students who get 120 minutes.
 (2) On average, students who get 90 minutes score 10 points higher than students who get 120 minutes.

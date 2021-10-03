@@ -61,7 +61,7 @@ You want to study whether expenditure per student can predict the educational ou
 $$ \text{reading.score} = \beta_0 + \beta_1 * \text{expenditure} + u$$
 In the dataset CASchools.csv (available from "https://raw.githubusercontent.com/f1kidd/Econ184/main/Data/CASchools.csv"), "expenditure per student" is measured by the "expenditure" variable and "reading.score" is measured by the "read" variable. Run the above regression in R and answer the following questions:
 
-a. Compute $\beta_0$, $\beta_1$ and SE($\beta_1$). 
+a. Compute $\hat{\beta}_0$, $\hat{\beta}_1$ and SE($\hat{\beta}_1$). 
 b. Construct a 95% confidence interval for $\beta_1$.
 c. Should we conclude that expenditure per student can predict the reading score? Use 1% significance level. Please write out $H_0$ and $H_1$ and use the p-value approach.
 

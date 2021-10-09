@@ -172,6 +172,7 @@ for(i in 1:N){
   z = rnorm(n, mean = 0, sd = 1)
   u = 0.83*sqrt(abs(exp-5312))*z
 # generate test score as a function of expenditure and u
+# abbadaba
   score = beta0 + beta1*exp + u
 # run regression
   reg1 = lm(score~exp)

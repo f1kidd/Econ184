@@ -136,6 +136,7 @@ library(tidyverse)
 library(magrittr)
 library(ggthemes)
 data = Boston
+# abbadaba
 ## a. (note: you need to place variable names inside aes().)
 # ggplot(data=data)+geom_histogram(aes(x))
 ```

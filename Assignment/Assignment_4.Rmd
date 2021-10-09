@@ -56,6 +56,7 @@ d. In part (b), is the null hypothesis on individual regression coefficients? (D
 ### Question 2
 
 Ignore "income". Consider the following regression: $$interest = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3 + \beta_4 X_1X_3 + \beta_5 X_2X_3 + u$$
+
 * $X_1$ is binary (1 means "medium" and 0 means "not medium")
 * $X_2$ is binary (1 means "low" and 0 means "not low")
 * $X_3$="self" ($X_3$=1 means "self-employed" and $X_3$=0 means "not self-employed")
@@ -70,6 +71,7 @@ d. You have a theory: for those that are self-employed, the credit rating does n
 ### Question 3
 
 Ignore "self". Consider the following regression: $$interest = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3 + \beta_4 X_1X_3 + \beta_5 X_2X_3 + u$$
+
 * $X_1$ is binary (1 means "medium" and 0 means "not medium")
 * $X_2$ is binary (1 means "low" and 0 means "not low")
 * $X_3$ = income

@@ -1,8 +1,7 @@
 ---
 title: "Econ 184b, Econometrics, Assignment 3"
-output:
-  html_document: default
-  pdf_document: default
+
+output: html_document
 ---
 
 ```{r,echo=F}
@@ -17,7 +16,7 @@ library(magrittr)
 library(readr)
 code_dir = dirname(rstudioapi::getActiveDocumentContext()$path)
 knitr::opts_knit$set(root.dir=code_dir)
-# setwd(code_dir)
+setwd(code_dir)
 ```
 
 
@@ -29,15 +28,23 @@ For the programming problems, you need to submit both the compiled pdf/html file
 
 You will be receiving a total of 15% bonus if you submit one single pdf/html compiled directly from Rmarkdown, along with the .rmd file. 
 
-### Question 1:
+### Question 1 (20 points, 10 each):
 A survey of 328 registered voters is conducted, and the voters are asked to choose between candidate A and candidate B. Let p denote the fraction of voters in the population who prefer candidate A, and let $\hat{p}$ denote the fraction of voters in the sample who prefer candidate A.
 
 You are interested in constructing a confidence interval for p. Someone suggested that you can use $[\hat{p}-0.1,\hat{p}+0.1]$ as a confidence interval.
 
 a. What is the coverage probability of this confidence interval if p=0.6? (What is $p(\hat{p}-0.1 \leq p \leq \hat{p}+0.1)$ when p=0.6?)
-b. If you observe that $\hat{p}=0.5$, can you reject the hypothesis that $H_0: p = 0.6$? 
+b. If you observe that $\hat{p}=0.5$, can you reject the hypothesis that $H_1: p \neq 0.6$? 
 
-### Question 2: 
+## Answer
+a. $p = 0.6$, thus, $E(\hat{p}) = 0.6, SE(\hat{p}) = \sqrt{\frac{p*(1-p)}{n}} = 0.0272$
+$p(\hat{p}-0.1 \leq p \leq \hat{p}+0.1) = p(0.5 \leq \hat{p} \leq 0.7) = \Phi(3.6968)-\Phi(-3.6968)$ = 0.9999-0.0001 = 0.9998
+
+b.
+The t-statistic is (0.5-0.6)/0.0272 = -3.676.   
+Since |-3.676|>1.96, we can reject the null hypothesis. 
+
+### Question 2 (20 points, 10 each): 
 
 You want to study whether or not academic achievement is related among different subjects. For example, do students who perform well on reading also tend to perform well on math? To answer this question, you collected data on 420 school districts in California. The sample is divided into two groups:    
 
@@ -47,14 +54,38 @@ You want to study whether or not academic achievement is related among different
 a. construct a 95% confidence intervals for $\mu_1-\mu_2$
 b. can we conclude that the two groups (defined by the reading score) have different math scores? Use 1% significance level. Please write out the null and alternative hypothesis, and use both the t-test and the p-value approach to test the hypothesis. 
 
-### Question 3:
+## Answer
+a.  $E(\mu_1-\mu_2) = 664.11-636.02 = 28.09$
+
+    $Sd(\mu_1-\mu_2) = \sqrt(\frac{14.28^2}{259}+\frac{10.13^2}{161}) = 1.19$ 
+    
+    $28.09+1.19*1.96 = 30.4224$
+    
+    $28.09-1.19*1.96 = 25.7576$
+    
+    Thus, the 95% confidence interval is [25.7576, 30.4224]
+
+b.
+
+$H_0: \mu_1-\mu_2 = 0$
+$H_1: \mu_1-\mu_2 \neq 0$
+
+The t statistic is calculated by $28.09/1.19 = 23.60 > 2.57$.
+
+Thus, we can reject the null hypothesis, so that there is difference between two groups. 
+
+### Question 3 (10 points):
 A professor decides to run an experiment to measure the effect of time pressure on final exam scores. He gives each of the 400 students in his course the same final exam, but some students have 90 minutes to complete the exam, while others have 120 minutes. Each student is randomly assigned one of the examination times, based on the flip of a coin. Let $Y_i$ denote the number of points scored on the exam by the i-th student. Let $X_i$ measure the amount of time that the student has to complete the exam: $X_i=1$ means "90 minutes" and $X_i=0$ means "120 minutes". Consider the regression model $Y_i = \beta_0 + \beta_1X_i + u_i$. Suppose that we estimated that $\hat{\beta}_1=10$. Consider the following statements.
 
 (1) On average, students who get 90 minutes score 10 points lower than students who get 120 minutes.
 (2) On average, students who get 90 minutes score 10 points higher than students who get 120 minutes.
 Which one of the above statements is true? Explain your answer.
 
-### Question 4:
+## Answer
+
+The second statement is true. Because when the $X_i=1$ means "90 minutes", and its corresponding slope is 10. It menas that for students who take 90 minutes will get a 10 points higher grade. 
+
+### Question 4
 
 You want to study whether expenditure per student can predict the educational outcome. To answer this question, you decided to run the following regression:
 
@@ -65,17 +96,41 @@ a. Compute $\hat{\beta}_0$, $\hat{\beta}_1$ and SE($\hat{\beta}_1$).
 b. Construct a 95% confidence interval for $\beta_1$.
 c. Should we conclude that expenditure per student can predict the reading score? Use 1% significance level. Please write out $H_0$ and $H_1$ and use the p-value approach.
 
-Your code could look like this:
+Answer:
+
+a. (8 points)
 ```{r}
 library(tidyverse)
+library(lmtest)
+library(sandwich)
 ca_school_url = "https://raw.githubusercontent.com/f1kidd/Econ184/main/Data/CASchools.csv"
 data = read_csv(ca_school_url)
 # run regression
+m = lm(data$read~data$expenditure)
+
 # generate regression diagnostics
-# compute confidence interval
+cf1 = coeftest(m,vcov=vcovHC)
+cf1
 ```
 
-### Question 5
+$\hat{\beta}_0$ = 618.25; $\hat{\beta}_1$ = 0.00691; SE($\hat{\beta}_1$)=0.00167. 
+b. (7 points)
+```{r}
+# compute confidence interval
+upper_bound = cf1[2,1] + cf1[2,2] * 1.96
+lower_bound = cf1[2,1] - cf1[2,2] * 1.96
+round(c(lower_bound,upper_bound),digits=5)
+```
+The confidence interval is given as [`r round(c(lower_bound,upper_bound),digits=5)`]
+
+c. (7 points)
+
+$H0:\beta_1 = 0$
+$H1:\beta_1 \neq 0$
+
+The associated p-value is $4.052*10^{-5} < 0.01$, thus, we can reject the null hypothesis.
+
+### Question 5 (30 points. 5 points for each question except part c, which worths 10 points.)
 Generate a set of new data from the model
 $$test.score = \beta_0 + \beta_1 * \text{expenditure} + u$$
 with the following parameter: $\beta_0=686$, $\beta_1=0.006$, and n=420. 
@@ -89,22 +144,62 @@ c. Use 5,000 simulations, calculate the probability that the actual $\hat{\beta}
 d. The hetetoskedasticity-robust standard error for $\beta_1$ is 0.0020346. what is the range that contains 95% of $\hat{\beta}_1$ given this standard error?
 e. Use the same simulation above, calculate the probability that the actual $\hat{\beta}_1$ falling into the range calculated in part (d).
 
-Your code could look like the following:
+Answers:
+
+a. The model is clearly heteroskedastic because the variance of the error depends on X. 
+
+b.
+```{r}
+se_lm = 0.0014359
+lower_bound = 0.006 - se_lm*1.96
+upper_bound = 0.006 + se_lm*1.96
+```
+The 95% confidence interval for $\beta_1$ given this standard error is [`r round(lower_bound,5)`,`r round(upper_bound,5)`].
+
+c. 
 ```{r}
 n=420
 N=5000
 beta0 = 686
 beta1 = 0.006
 
+sd = sqrt(401956)
+slope = vector()
 for(i in 1:N){
 # generate expenditure from the distribution
-  
+  exp = rnorm(n, mean = 5312, sd = sd)
 # generate u as a function of expenditure
-  
+  z = rnorm(n, mean = 0, sd = 1)
+  u = 0.83*sqrt(abs(exp-5312))*z
 # generate test score as a function of expenditure and u
-
+  score = beta0 + beta1*exp + u
 # run regression
-  
+  reg1 = lm(score~exp)
 # calculate coverage probability
+  temp_beta1 = reg1$coefficients[2]
+  slope = c(slope,reg1$coefficients[2])
 }
+
+p0 = sum(slope<upper_bound & slope>lower_bound)/N
+p0
 ```
+The probability that the 95% confidence interval covers those parameters is `r round(p0,3)`. 
+
+d.
+
+```{r}
+se_lm = 0.0020346
+lower_bound = 0.006 - se_lm*1.96
+upper_bound = 0.006 + se_lm*1.96
+```
+The 95% confidence interval for $\beta_1$ given this standard error is [`r round(lower_bound,5)`,`r round(upper_bound,5)`].
+
+e. 
+```{r}
+p1 = sum(slope<upper_bound & slope>lower_bound)/N
+p1
+```
+The probability that the 95% confidence interval covers those parameters is `r round(p1,3)`. 
+
+Thus, using Monte Carlo simulation, we can conclude that the robust standard error is very close to the actual distribution of $\hat{\beta}_1$, whereas the non-robust standard error is biased under heteroskedasticity. 
+

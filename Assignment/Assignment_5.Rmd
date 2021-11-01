@@ -1,8 +1,8 @@
 ---
 title: "Econ 184b, Econometrics, Assignment 5"
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
 ---
 
 ```{r,echo=F}
@@ -42,18 +42,36 @@ b. The researcher collects data on average temperature in each state for each ye
 
 c. The researcher collects data on temperature anomalies (difference between the annual temperature and the long-run average in that state) for each year in the sample ($TempAnomaly_{it}$) and adds this regressor to the regression in part (a). 
 
-### Question 2 (Adapted version of Textbook Exercise 10.2):
+### Question 2 (Adapted version of Acemoglu, Johnson, Robinson, and Yared 2008 AER):
 
-Do citizens demand more democracy and political freedom as their incomes grow? That is, is democracy a normal good? The data file ["Income_Democracy.xlsx"](https://raw.githubusercontent.com/f1kidd/Econ184/main/data/Income_Democracy.xlsx) contains a panel data set from 195 countries for the years 1960, 1965, . . . , 2000. A detailed description of the dataset is given [here](https://raw.githubusercontent.com/f1kidd/Econ184/main/data/Income_Democracy_Description.pdf). 
+Do citizens demand more democracy and political freedom as their incomes grow? That is, is democracy a normal good? The data file ["Income_Democracy.xlsx"](https://github.com/f1kidd/Econ184/blob/main/Data/income_democracy.xlsx?raw=true) contains a panel data set from 195 countries for the years 1960, 1965, . . . , 2000. A detailed description of the dataset is given [here](https://github.com/f1kidd/Econ184/blob/main/Data/Income_Democracy_Description.pdf?raw=true). 
 
 The dataset contains an index of political freedom/democracy for each country in each year, together with data on the country’s income and various demographic controls. (The income and demographic controls are lagged five years relative to the democracy index to allow time for democracy to adjust to changes in these variables.)
 
-#### Part a: Is the data set a balanced panel? Explain.   
-#### Part b: The index of political freedom/democracy is labeled Dem_ind.
+#### Part a: The index of political freedom/democracy is labeled Dem_ind.
   1. What are the minimum and maximum values of Dem_ind in the data set? What are the mean and standard deviation of Dem_ind?    
   2. What is the value of Dem_ind for the United States in 2000? Averaged over all years in the data set?     
   3. What is the value of Dem_ind for Libya in 2000? Averaged over
 all years in the data set?    
+
+#### Part b: 
+1. Plot the bivariate relationship between log GDP per capita (on the x axes) and the democracy score (on the y axes) by pooling all time periods together. Your plot should resemble this:
+```{r,echo=F}
+library(readxl)
+library(ggplot2)
+library(ggthemes)
+data = read_excel("income_democracy.xlsx")
+ggplot(data=data,aes(y=dem_ind,x=log_gdppc)) + geom_point() + theme_solarized() + geom_smooth(method="lm") + 
+  xlab("log GDP per capita") + ylab("democracy index")
+```
+
+2. Plot a panel of bivariate relationships between log GDP per capita (on the x axes)  and the democracy score (on the y axes), separating the nine time periods. Your plot should resemble this:
+
+```{r,echo=F}
+ggplot(data=data,aes(y=dem_ind,x=log_gdppc)) + geom_point() + 
+  facet_wrap(vars(year)) + theme_solarized() + geom_smooth(method="lm") + 
+  xlab("log GDP per capita") + ylab("democracy index")
+```
 
 #### Part c: The logarithm of per capita income is labeled Log_GDPPC. Regress Dem_ind on Log_GDPPC. Use standard errors that are clustered by country. 
   1. How large is the estimated coefficient on Log_GDPPC? Is the coefficient statistically significant?     
@@ -79,7 +97,7 @@ effects of income on democracy?
 
 Your code could start like this:
 
-```{r}
+```{r,eval=F}
 # place the data file in the same directory as your code
 library(readxl)
 data = read_excel("income_democracy.xlsx")

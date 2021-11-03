@@ -56,8 +56,22 @@ all years in the data set?
 
 #### Part b: 
 1. Plot the bivariate relationship between log GDP per capita (on the x axes) and the democracy score (on the y axes) by pooling all time periods together. Your plot should resemble this:
+```{r,echo=F}
+library(readxl)
+library(ggplot2)
+library(ggthemes)
+data = read_excel("income_democracy.xlsx")
+ggplot(data=data,aes(y=dem_ind,x=log_gdppc)) + geom_point() + theme_solarized() + geom_smooth(method="lm") + 
+  xlab("log GDP per capita") + ylab("democracy index")
+```
 
 2. Plot a panel of bivariate relationships between log GDP per capita (on the x axes)  and the democracy score (on the y axes), separating the nine time periods. Your plot should resemble this:
+
+```{r,echo=F}
+ggplot(data=data,aes(y=dem_ind,x=log_gdppc)) + geom_point() + 
+  facet_wrap(vars(year)) + theme_solarized() + geom_smooth(method="lm") + 
+  xlab("log GDP per capita") + ylab("democracy index")
+```
 
 #### Part c: The logarithm of per capita income is labeled Log_GDPPC. Regress Dem_ind on Log_GDPPC. Use standard errors that are clustered by country. 
   1. How large is the estimated coefficient on Log_GDPPC? Is the coefficient statistically significant?     

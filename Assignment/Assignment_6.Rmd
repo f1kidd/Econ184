@@ -40,7 +40,7 @@ b. Suppose amongst these 100 pieces, there are 20 M&Ms, 30 Godivas, and 50 Sugus
 
 ### Question 2: Who tends to have extramarital affairs?
 
-This question uses a data set ([affairs.csv](https://github.com/f1kidd/Econ184/blob/main/Data/affairs.csv?raw=true) and  [affairs_description.pdf](https://github.com/f1kidd/Econ184/blob/main/Data/affairs_description?raw=true)) from a 1969 survey filled out by readers of Psychology Today. The sample includes employed men and women who are married for the first time. We want to know if there are any significant relationships between the probability of having an extramarital affair and certain characteristics of married people.
+This question uses a data set ([affairs.csv](https://github.com/f1kidd/Econ184/blob/main/Data/affairs.csv?raw=true) and  [affairs_description.pdf](https://github.com/f1kidd/Econ184/raw/main/Data/affairs_description.pdf)) from a 1969 survey filled out by readers of Psychology Today. The sample includes employed men and women who are married for the first time. We want to know if there are any significant relationships between the probability of having an extramarital affair and certain characteristics of married people.
 
 a. Looking at the variables in the dataset, do you expect a relationship between extramarital affairs and any of the variables in the dataset? If yes, what sign(s) do you expect?
 b. Estimate a linear probability model of affair (not affairs) on male, age, yearsmarried, kids, religiousness, education, and rating (all in one regression). Remember to use the heteroskedasticity robust
@@ -59,6 +59,7 @@ Your code could start with this:
 url = "https://github.com/f1kidd/Econ184/blob/main/Data/affairs.csv?raw=true"
 affairs = read_csv(url)
 ```
+
 ## Question 3: Predicting Breast Cancer
 
 This question uses the Wisconsin Breast Cancer dataset (available [here](https://raw.githubusercontent.com/f1kidd/Econ184/main/Data/breastcancer.csv)). For a documentation of the data set, please visit https://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+(Original). 

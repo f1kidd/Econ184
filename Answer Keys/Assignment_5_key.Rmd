@@ -74,7 +74,7 @@ Answers:
 library(readxl)
 library(ggplot2)
 library(ggthemes)
-data = read_excel("income_democracy.xlsx")
+data = read_excel("../data/income_democracy.xlsx")
 ```
 
 ```{r}
@@ -95,6 +95,7 @@ data %>% filter(country=="Libya") %>% summarize(mean(dem_ind))
 1. Plot the bivariate relationship between log GDP per capita (on the x axes) and the democracy score (on the y axes) by pooling all time periods together. Your plot should resemble this:
 
 ```{r}
+# aabadaba
 ggplot(data=data,aes(y=dem_ind,x=log_gdppc)) + geom_point() + theme_solarized() + geom_smooth(method="lm") + 
   xlab("log GDP per capita") + ylab("democracy index")
 ```
@@ -118,6 +119,7 @@ Answers:
 library(sandwich)
 library(lmtest)
 library(plm)
+# aabadaba
 lm1 = lm(dem_ind ~ log_gdppc,data=data)
 coeftest(lm1,vcov=vcovHC,cluster="group")
 ```
@@ -162,6 +164,7 @@ coeftest(plm1,vcov=vcovHC,cluster="group")
 
 A preferred specification could look like this:
 ```{r}
+# aabadaba
 plm2 = plm(dem_ind ~ log_gdppc + log_pop + educ + age_median ,data=data,index=c("country","year"),
            model="within",effect="individual")
 coeftest(plm2,vcov=vcovHC,cluster="group")

@@ -1,0 +1,199 @@
+---
+title: "Econ 184b, Econometrics, Assignment 5, Answer Key"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r,echo=F}
+knitr::opts_chunk$set(message=F,warning=F)
+```
+
+```{r,echo=F,message=FALSE}
+library(tidyverse)
+library(ggplot2)
+library(ggthemes)
+library(magrittr)
+library(readr)
+library(sandwich)
+library(lmtest)
+code_dir = dirname(rstudioapi::getActiveDocumentContext()$path)
+knitr::opts_knit$set(root.dir=code_dir)
+# setwd(code_dir)
+```
+
+
+The raw .rmd file for this assignment are available at: https://raw.githubusercontent.com/f1kidd/Econ184/main/Assignment/Assignment_5.Rmd
+
+The raw .rmd file for this answer key are available at: https://raw.githubusercontent.com/f1kidd/Econ184/main/Assignment/Assignment_5_key.Rmd
+
+Note: For the math problems, you can either (1) type your solution and compile it with RMarkdown; (2) type your solution use another word-processing software and convert it into a PDF file; (3) write your solution on paper, scan it and make it into a legible PDF file. TAs can decide, at their discretion, that the submitted file is illegible and thus give zero credit to a question or the entire problem set. If you type your solutions (options 1 and 2 above), you will get **a bonus equal to 5% of your performance** on the problem set. No credit will be given if you only report the final answers without showing intermediate steps whenever appropriate. 
+
+For the programming problems, you need to submit both the compiled pdf/html file and the RMarkdown (.rmd) file on LATTE. You will get **an additional bonus equal to 5% of your performance** if your RMarkdown file is completely reproducible with minimal altercation (install packages, etc.). That is, our team (or anyone else) should be able to recompile your Rmarkdown file and reach *the same* result. You need to explicitly write out your answers - just showing programming outputs will receive zero credit. 
+
+You will be receiving a total of 15% bonus if you submit one single pdf/html compiled directly from Rmarkdown, along with the .rmd file. 
+
+
+
+### Question 1: 
+
+(7 points each sub-question)
+
+A researcher believes that traffic fatalities increase when roads are cold and icy and thinks that therefore states that are colder will have more fatalities than other states. Comment on the following methods designed to estimate the effect of snow on fatalities:
+
+a. The researcher collects data on the average temperature for each state and
+adds this regressor ($AverageTemp_i$) to the regression estimated two-way fixed effect: $FatalityRate_{it} = BeerTax_{it} + DrinkingAge_{it} + v_i + \lambda_t + u_{it}$
+
+Answer: this model cannot be estimated because of perfect multicollinearity. Average temperature for each state over multiple years is time-invariant, and thus will be absorbed by the individual fixed effect.
+
+b. The researcher collects data on average temperature in each state for each year in the sample ($AverageTemp_{it}$) and adds this regressor to the regression in part (a).
+
+Answer: This is an approproate study design. The average temperature varies by both state and time. The TWFE will estimate the deviation of temperature at year t from the state-specific average temperature over multiple years, $AverageTemp_{it} - \bar{AverageTemp_{i}$.
+
+c. The researcher collects data on temperature anomalies (difference between the annual temperature and the long-run average in that state) for each year in the sample ($TempAnomaly_{it}$) and adds this regressor to the regression in part (a). 
+
+Answer: This is an appropriate study design. The temperature anomalies are just the demeaned average temperature (temperature deviations), which makes this design identical to the design in part (b) if we estimate the model using TWFE. 
+
+### Question 2 (Adapted version of Acemoglu, Johnson, Robinson, and Yared 2008 AER):
+
+(5 points per sub-question)
+
+Do citizens demand more democracy and political freedom as their incomes grow? That is, is democracy a normal good? The data file ["Income_Democracy.xlsx"](https://github.com/f1kidd/Econ184/blob/main/Data/income_democracy.xlsx?raw=true) contains a panel data set from 195 countries for the years 1960, 1965, . . . , 2000. A detailed description of the dataset is given [here](https://github.com/f1kidd/Econ184/blob/main/Data/Income_Democracy_Description.pdf?raw=true). 
+
+The dataset contains an index of political freedom/democracy for each country in each year, together with data on the country’s income and various demographic controls. (The income and demographic controls are lagged five years relative to the democracy index to allow time for democracy to adjust to changes in these variables.)
+
+#### Part a: The index of political freedom/democracy is labeled Dem_ind.
+  1. What are the minimum and maximum values of Dem_ind in the data set? What are the mean and standard deviation of Dem_ind?    
+  2. What is the value of Dem_ind for the United States in 2000? Averaged over all years in the data set?     
+  3. What is the value of Dem_ind for Libya in 2000? Averaged over
+all years in the data set?    
+
+Answers: 
+
+```{r}
+library(readxl)
+library(ggplot2)
+library(ggthemes)
+data = read_excel("income_democracy.xlsx")
+```
+
+```{r}
+# summary statistics
+summary(data$dem_ind)
+sd(data$dem_ind,na.rm=T)
+# US
+data %>% filter(country=="United States") %>% summarize(mean(dem_ind))
+# Libya
+data %>% filter(country=="Libya") %>% summarize(mean(dem_ind))
+```
+
+1. Values of Dem_ind range from 0.0 to 1.0. The mean in 0.50 and the standard deviation is 0.37. 
+2. The value for the U.S. in 2000 is Dem_ind = 1.0.  The average for the nine years in the sample is 0.986.
+3. The value for Libya in 2000 is Dem_ind = 0.0.  The average for the nine years in the sample is 0.11.
+
+#### Part b: 
+1. Plot the bivariate relationship between log GDP per capita (on the x axes) and the democracy score (on the y axes) by pooling all time periods together. Your plot should resemble this:
+
+```{r}
+ggplot(data=data,aes(y=dem_ind,x=log_gdppc)) + geom_point() + theme_solarized() + geom_smooth(method="lm") + 
+  xlab("log GDP per capita") + ylab("democracy index")
+```
+
+2. Plot a panel of bivariate relationships between log GDP per capita (on the x axes)  and the democracy score (on the y axes), separating the nine time periods. Your plot should resemble this:
+
+```{r}
+ggplot(data=data,aes(y=dem_ind,x=log_gdppc)) + geom_point() + 
+  facet_wrap(vars(year)) + theme_solarized() + geom_smooth(method="lm") + 
+  xlab("log GDP per capita") + ylab("democracy index")
+```
+
+#### Part c: The logarithm of per capita income is labeled Log_GDPPC. Regress Dem_ind on Log_GDPPC. Use standard errors that are clustered by country. 
+
+  1. How large is the estimated coefficient on Log_GDPPC? Is the coefficient statistically significant?     
+  2. If per capita income in a country increases by 20%, by how much is Dem_ind predicted to increase? What is a 95% confidence interval for the prediction? Is the predicted increase in Dem_ind large or small? (Explain what you mean by large or small.)     
+  
+Answers:
+
+```{r}
+library(sandwich)
+library(lmtest)
+library(plm)
+lm1 = lm(dem_ind ~ log_gdppc,data=data)
+coeftest(lm1,vcov=vcovHC,cluster="group")
+```
+
+1. The coefficient is 0.24 with a standard error of 0.007.  The 95% confidence interval is 0.22 to 0.25. The coefficient is large, as described below.  
+2. A 20% increase in GDP per capita implies that log(gdp) increases by approximately 0.20, so that Dem_ind is predicted to increase by approximately 0.20*0.235 = 0.047, or about 1/10 of the standard deviation in the dataset. The 95% confidence for the effect is (0.221,0.248)
+
+Note: If you use any panel data estimator here, you will get full credit as long as you interpret the coefficients and calculate the confidence intervals correctly. 
+  
+#### Part d:
+  1. Find a variable that varies across countries but plausibly varies little—or not at all—over time and that could cause omitted variable bias in the regression in (c).     
+  2. Find data on this variable, and estimate a new model by including Dem_ind and your variable in question. Does your result change from part (c)? Why? [^1]       
+  3. Suggest a variable that varies over time but plausibly varies little—or not at all—across countries and that could cause omitted variable bias in the regression in (c).       
+  4. Find data on this variable, and estimate a new model by including Dem_ind and your variable in question. Does your result change from part (c)? Why?  
+  
+  
+Answer: 
+
+1. Open ended question. Some of the examples could be: latitude, longitude, average climate, dominant religion, former colony status, etc. All these can potentially shape their preference for democracy and also be correlated with economic development, and thus per-capita income. 
+2. Open ended question. As long as the variable makes sense and is correctly estimated and interpreted, full mark is given. 
+3. Open ended question. Some of the examples could include: global commodity price for oil, rice, wheat, etc.; before or after the end of the cold war, etc.
+4. Open ended question. As long as the variable makes sense and is correctly estimated and interpreted, full mark is given.
+
+Note: partial credit if no explanation is given as to why the chosen variable is a potential omitted variable, i.e., it is potentially related to both GDP and democracy. 
+
+#### Part e:
+
+  1. Estimate the regression in (c), allowing for country fixed effects.
+How do your answers to (c)(i) and (c)(ii) change?
+  2. There are addition demographic controls in the data set. Should these variables be included in the regression? If so, how do the results change when they are included?
+
+Answers: 
+```{r}
+plm1 = plm(dem_ind ~ log_gdppc,data=data,index=c("country","year"),
+           model="within",effect="individual")
+coeftest(plm1,vcov=vcovHC,cluster="group")
+```
+
+1. The estimated coefficient falls by a factor of 3, to 0.083 with a standard error of 0.032. The estimated effect, while significantly smaller is still statistically significant at the 1% significance level. The estimated effect in (c2) also falls by a factor of 3.
+
+2. Many of the variables should be included in the dataset. For example, log population could be correlated with gdp per capita (through economy/diseconomy of scale), and with democracy (larger country faces more problems with collective action). Thus, population size could potentially be an omitted variable. Similar with age and education. 
+
+A preferred specification could look like this:
+```{r}
+plm2 = plm(dem_ind ~ log_gdppc + log_pop + educ + age_median ,data=data,index=c("country","year"),
+           model="within",effect="individual")
+coeftest(plm2,vcov=vcovHC,cluster="group")
+```
+
+From the preferred model, the estimated coefficient on log_gdppc falls further to 0.025 and is statistically insignificant. 
+
+#### Part f: 
+
+1. Which of the models you just ran consistently estimate the effect of income on democracy? Why? 
+2. Based on your analysis, what conclusions do you draw about the
+effects of income on democracy?
+
+Answers: 
+
+1. Between the above models, the model in part (e2) suffers the least omitted variable bias. (Model e1 is actually not consistent because it omits a number of important variables, noticeably education level). However, with the data set at hand, a two-way fixed effect model seems the most appropriate: 
+
+```{r}
+plm2 = plm(dem_ind ~ log_gdppc + log_pop + educ + age_median ,data=data,index=c("country","year"),
+           model="within",effect="twoway")
+coeftest(plm2,vcov=vcovHC,cluster="group")
+```
+
+It is also worth noting that even with two-way fixed effects, the model still omits many potential confounding variables that vary over both individual and time. For example, institutional stability, government accountability, business environment, shifts in culture/religion, etc. 
+
+2. After controlling for omitted variables - particularly country-fixed effects, there is little evidence of an income effect on the demand for democracy.
+
+Another acceptable answer could be that none of these models are consistent - we can say nothing about the relationship between income and democracy from these models. 
+
+According to Acemoglu et al. - democracy is created not through a gradual process of income accumulation and citizen awareness, but rather through critical historical junctures with events such as the Arab Spring, the June struggle, the choice by Chiang Ching-Kuo, etc.
+
+Further readings: [Why Nations Fail: The Origins of Power, Prosperity, and Poverty](https://www.amazon.com/Why-Nations-Fail-Origins-Prosperity/dp/0307719227)
+
+[^1]: Some of the good places to look for country-level data include the world bank (https://data.worldbank.org/), our world in data (https://ourworldindata.org/), and Statista (https://guides.library.brandeis.edu/statista).
+

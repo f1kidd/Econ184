@@ -200,10 +200,10 @@ pre code {
 <p><span class="math display">\[\Delta ln(crime_{it}) = \beta_1 \Delta ln(prison_{it}) + \lambda_t + \Delta \text{other controls} + \lambda_t + \Delta u_it \quad (2) \]</span></p>
 <ol style="list-style-type: lower-alpha">
 <li>The above equation will suffer from the simultaneity problem if estimated using OLS. Why?</li>
-<li>Levitt proposes to use prison overcrowding litigation as an instrument to identify (i.e. estimate) equation (2). Why is prison overcrowding litigation a valid instrument?</li>
+<li>Levitt proposes to use prison overcrowding litigation as an instrument to identify (i.e. estimate) equation (2). Why is prison overcrowding litigation a valid instrument? (Overcrowding litigation are cases brought by civil rights groups that argues for better prisoner conditions in state prisons. This limits the ability for the government to put convicted criminals into prisons.)</li>
 <li>Estimate equation (2) using time fixed effect, <strong>using data from 1981-1993</strong> (year 1980 is the base year in the first-difference transformation).</li>
 <li>Estimate equation (2) using 2SLS with <em>final1</em> as an instrument. This is a binary variable for whether a final decision was reached on overcrowding litigation in the current year. What happens to the coefficient on prison? What happens to the standard error? Is the coefficient on prison statistically significant?</li>
-<li>Estimate equation (2) using 2SLS with <em>final1</em> and <em>final2</em> as instruments (the same equation as in question 4d of PS 6, but with two instruments). These are binary variables for whether a final decision was reached on overcrowding litigation in the current year (<em>final1</em>) or in the previous two years (<em>final2</em>). What happens to (i) the coefficient on prison and (ii) the standard error for the coefficient on prison as compared to the same regression estimated using only <em>final1</em> as an instrument (from question 4d in PS 6)?</li>
+<li>Estimate equation (2) using 2SLS with <em>final1</em> and <em>final2</em> as instruments. These are binary variables for whether a final decision was reached on overcrowding litigation in the current year (<em>final1</em>) or in the previous two years (<em>final2</em>). What happens to (i) the coefficient on prison and (ii) the standard error for the coefficient on prison as compared to the same regression estimated using only <em>final1</em> as an instrument?</li>
 <li>Are <em>final1</em> and <em>final2</em> strong instruments?</li>
 <li>Are <em>final1</em> and <em>final2</em> exogenous?</li>
 </ol>
@@ -227,7 +227,7 @@ data = read_csv(url)</code></pre>
 <li>Calculate the mean secondary school completion for women in cities where Islamic parties won (<em>margin</em>&gt;0) and where they lost (<em>margin</em>&lt;0).</li>
 <li>Do you think part (a) presents a credible estimate of the causal effect of Islamic party control? Why or why not?</li>
 <li>Use a regression discontinuity model, estimate the causal effect of Islamic party control on secondary school completion for women. How large is this effect?</li>
-<li>Estimate the causal effect of Islamic party control on secondary school completion for women. How large is this effect?</li>
+<li>Estimate the causal effect of Islamic party control on secondary school completion for men. How large is this effect?</li>
 </ol>
 <p>Your code can start with this:</p>
 <pre class="r"><code>url = &quot;https://raw.githubusercontent.com/f1kidd/Econ184/main/Data/islamic_women.csv&quot;

@@ -125,7 +125,7 @@ coeftest(lm1,vcov=vcovHC,cluster="group")
 ```
 
 1. The coefficient is 0.24 with a standard error of 0.007.  The 95% confidence interval is 0.22 to 0.25. The coefficient is large, as described below.  
-2. A 20% increase in GDP per capita implies that log(gdp) increases by approximately 0.20, so that Dem_ind is predicted to increase by approximately 0.20*0.235 = 0.047, or about 1/10 of the standard deviation in the dataset. The 95% confidence for the effect is (0.221,0.248)
+2. A 20% increase in GDP per capita implies that log(gdp) increases by approximately 0.20, so that Dem_ind is predicted to increase by approximately 0.20*0.235 = 0.047, or about 1/10 of the standard deviation in the dataset. The 95% confidence for the effect is (0.0442 0.0496).
 
 Note: If you use any panel data estimator here, you will get full credit as long as you interpret the coefficients and calculate the confidence intervals correctly. 
   

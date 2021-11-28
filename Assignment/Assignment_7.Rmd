@@ -1,8 +1,8 @@
 ---
 title: "Econ 184b, Econometrics, Assignment 7"
 output:
-  html_document: default
   pdf_document: default
+  html_document: default
 ---
 
 ```{r,echo=F}

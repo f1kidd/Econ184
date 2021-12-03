@@ -203,7 +203,7 @@ coeftest(lm_int2,vcov=vcovHC)</code></pre>
 <ol style="list-style-type: decimal">
 <li>The predictedtest score for the low-english-learner group is: <span class="math inline">\(\beta_0+\beta_2 + \beta_1 STR\)</span>. Thus to test whether their performance is affected by class size, we test the hypothesis that:</li>
 </ol>
-<p><span class="math inline">\(H_0: \beta_3=0 \quad vs. \quad H_1: \beta_3\neq 0\)</span></p>
+<p><span class="math inline">\(H_0: \beta_1=0 \quad vs. \quad H_1: \beta_1\neq 0\)</span></p>
 <pre class="r"><code>library(car)
 linearHypothesis(lm_int2,c(&quot;STR=0&quot;),vcov=vcovHC)</code></pre>
 <pre><code>## Linear hypothesis test

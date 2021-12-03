@@ -1,6 +1,10 @@
+library(tidyverse)
+library(magrittr)
+
 ###### Census data ######
+code_dir = dirname(rstudioapi::getActiveDocumentContext()$path)
 setwd(code_dir)
-setwd("../data/safegraph_open_census_data_2018/data")
+setwd("safegraph_open_census_data_2018/data")
 
 ## list of variables needed:
 # income
@@ -86,7 +90,7 @@ temp_census = chunk0 %>% left_join(chunk19,by="census_block_group")
 census_income = temp_census %>% 
   select(census_block_group,contains('e',ignore.case=F)) %>% summarize(
     census_bg = census_block_group,
-    median_income = z
+    median_income = B19049e1
   ) 
 census_store %<>% left_join(census_income,by="census_bg") 
 

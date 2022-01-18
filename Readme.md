@@ -5,66 +5,28 @@ output:
 ---
 
 # Syllabus
-ECON 184B, Econometrics, Fall 2021   
+ECON 184B, Econometrics, Spring 2022   
 Instructor: Prof. Xinde "James" Ji   
+Lecture: T/Tu | 3:30-4:50 pm; https://brandeis.zoom.us/j/92770065343      
+Recitation: Wed 6:30-8:20 pm; https://brandeis.zoom.us/j/92770065343      
+
 Email: xji@brandeis.edu   
 
 **This is a tentative version of the syllabus, and is subject to change without prior notification.**
 
 Teaching/Course Assistants:   
-Frances Hoffen, fhoffen@brandeis.edu   
+Ailu Yu, ailuyu@brandeis.edu;       
 Sasha Skarboviychuk, sashaskarb@brandeis.edu  
-Joshua Ye, joshuaye@brandeis.edu   
 
-BUGS Tutor: Helen Yang, xinyuanyang@brandeis.edu
-
-Lecture: *Lown 002*
-
-* Tuesday/Thursday 2:00-3:30 pm (Section 1)
-* Tuesday/Thursday 4:00-5:30 pm (Section 2)  
- 
-Recitation: 
-
-* Friday 10:00-11:30 am at *Golding 101*
-
-Office Hours: 
-
-James: Wednesday 2:00 - 5:00 pm or by appointment. Physically at my office (*Sachar 1A*). Virtually via Zoom https://brandeis.zoom.us/j/97542193183    
-Sasha: Thursday 5:30 - 7:30 pm. Physically at the Shapiro Campus Center Atrium (near Einstein's).    
-Frances: Monday 7:00 - 9:00 pm. Physically at the Farber Library, by the Starbucks.    
-Joshua: Wednesday 6:00 - 8:00 pm. Phyhsically at the Farber Library, by the Starbucks.    
-
-Class Data Hub: [github.com/f1kidd/Econ184](https://github.com/f1kidd/Econ184)
-
-*Disclaimer: Email is the preferred communication mechanism, and I promise to respond to your email within 24 hours (48 hours on weekends). Using alternative communication media (instant messaging) does not guarantee a faster response.*     
+*Disclaimer: Email is the preferred communication mechanism, and my team promise to respond to your email within 24 hours (48 hours on weekends). Using alternative communication media (for example instant messaging) does not guarantee a faster response.*     
 
 ## Teaching Modes
-This class will be taught fully in person unless otherwise notified. Automatic recordings of synchronous class sessions will be uploaded to LATTE shortly after each lecture. Attendance will not be tracked, and you are not required to inform the instructor when you will miss an in-person class session. 
+This class is taught **online only**. Synchronous class sessions will run on T/Tu 3:00-4:50 pm, US Eastern Time. Video recordings of lectures will be posted shortly after each class session. You are FREE to choose between attending synchronous sessions or watch video recordings asynchronously. Whichever your choice, I will ensure that your learning outcomes are equally and fairly evaluated. 
 
-Accommodation will not be provided if you plan to be fully remote for the entire semester. 
+That said, you are encouraged to attend synchronous sessions if you are *able* to do so. There are at least several reasons: 
 
-## COVID-19 and Our Classroom[^1]
-We are still very much in a public health crisis. It is important to begin from the premise because the pandemic fundamentally shapes what this semester looks like, how we inhabit the class, and how we treat each other. 
-
-Here are some thoughts that I want to share with you upfront:
-
-* We are all in this pandemic together - your actions will affect not only yourself: but also your loved ones, my loved ones, and every one of our community members.
-* Some of our lives may be relatively unaffected by the pandemic, while others have experienced profound tragedies. Do not make assumptions about others' experiences with the virus.
-* We need to show compassion and respect to each other. Now more than ever.
-
-### On Symptoms
-If you are sick, particularly if you bear any symptoms resembling COVID-19 or if you test positive for COVID, do not come to class until you are cleared. Lecture recordings will be provided, and I will work with you to make sure you can catch up. 
-
-### On Vaccines
-* I have been fully vaccinated with the Pfizer mRNA (BNT162b2) vaccine. 
-* I will NOT ask whether you have been vaccinated, and you do not have any obligation to tell me your vaccination status.
-
-### On Masks[^2]
-Per university policy (as of 8/18/2021), masks are required for synchronous class sessions and for office hours with more than 4 persons present. Masks need to cover both your mouth and your nose. Exceptions are:
-
-* When you take a brief sip of beverage.
-* When speaking in a group setting where all others present are masked. The speaker(s) may lower or remove their mask while speaking and then raise or replace their mask to allow others to speak.
-* Other exceptions/accommodations approved by the instructor.
+1. The learning process of this class will be based on a series of in-class discussions and exercises. You will be better equipped to work on these problems in a peer environment.
+2. The same amount of time, effort, and critical thinking are expected for synchronous and asynchronous learning. You still need to invest heavily in this class in order to earn a successful grade with asynchronous learning. 
 
 ## Overview
 Is your Brandeis education worth it?[^3] How much impact does climate change have on agriculture[^4], the economy[^5], or your PSAT score?[^6] What explains the sex ratio imbalance in East Asia[^7] and Southeastern Asia[^8]? Fascinating questions as they are, we are not here to seek answers to these questions directly (*you are welcomed to check out relevant courses to these questions*). Instead, you will be learning the methods and techniques that allow you to answer these questions or any other empirical questions that fascinate you. 
@@ -91,7 +53,7 @@ Prerequisites: Econ 80a and Econ 83a; Econ 80a may be taken concurrently.
 ## Textbooks
 Required textbook: James H. Stock and Mark W. Watson, Introduction to Econometrics (4th edition), Pearson/Addison Wesley, 2019. 
 
-* You can use the 3rd edition to study but references to chapter/exercise numbers correspond to the 4th edition.
+* You can use the 3rd edition as well.
 
 If you are having difficulty purchasing course materials, please make an appointment with your Student Financial Services or Academic Services advisor to discuss possible funding options and/or textbook alternatives.
 
@@ -100,28 +62,31 @@ Additional readings will be posted on LATTE as the class goes along.
 
 ## Grading
 
-* In-class exercises: 10%
-    - We will be solving most in-class exercises together. Gradings are based on correctness, but you should be able to get the correct answer with active participation in class.
+* In-class exercises: 12.5%
+    - We will be solving most in-class exercises together. Gradings are based on semi-effort: you should be able to figure out the correct answers to these problems by the end of class. 
 * Problem sets: 20%
     - All problem sets are individual. There will be ~7 problems sets throughout the semester.
     - Only electronic submission is accepted. Late submissions will be accepted with a 10% penalty each day. 
-    - You need to submit both the compiled pdf/html file and the source code. You will receive a 5% bonus if your code is entirely reproducible with minimal altercation (e.g., package installation).
+    - You need to submit both the compiled pdf/html file and the source code. You will receive a 10% bonus if your code is entirely reproducible with minimal altercation (e.g., package installation).
 * Midterm 1: 25%*
-    - Closed book. Pen and calculator.
+    - Time TBD  
+    - Open book, open notes. 
 * Midterm 2: 25%*
-    - Semi-cumulative (you will need to use knowledge from the first half of the course). Closed book. Pen and calculator.
-* Empirical project assignment: 20%
+    - Time TBD
+    - Semi-cumulative (you will need to use knowledge from the first half of the course). Open book, open notes.  
+* Empirical project assignment: 17.5%
     - Instructions to follow. 
 
 ## Class Policies
+
+#### Attendance
+Synchronous participation is strongly recommended, and please keep your video on during the course of the synchronous lecture. If you choose to turn off your video, you are expected to answer my question when I call on you. 
 
 #### Recitation
 Recitation is strongly encouraged but not mandatory. No graded parts will be assigned during recitation time. That said, recitation is an important component of the class where we commit dedicated times for you to strengthen your grasp on R coding, problem sets, and prepare for exams. 
 
 #### Computer and Equipments
-You are expected to bring a personal computer to most lecture sessions, as we will be completing in-class exercises. You are expected NOT to use your computer to do anything unrelated to the class. Doing so not only hinders your own learning but also potentially distracts your colleagues. I reserve the right to place you in the last row of the classroom or ask you to leave the classroom.
-
-You will need to have the following software installed on your computer. These softwares are available across platforms (Windows, Mac, Linux) and free of charge.
+We will be using interactive Zoom for lectures and office hours. All other class-related materials will be posted on LATTE. You will need to have the following software installed on your computer. These softwares are available across platforms (Windows, Mac, Linux) and free of charge.
 
 * R (separate from RStudio)
 * Rstudio
@@ -163,8 +128,6 @@ In order to provide test accommodations, I need the letter more than 48 hours in
 
 **-------Empirical Project Due------**
 
-[^1]: Courtesy of Dr. Guy McHendry, Creighton University.
-[^2]: Mask policies are subject to change following state/university masking guidelines and/or public health risk assessments based on the precautionary principle. 
 [^3]: There has been extensive research on the return to education on earnings and non-wage outcomes. See, e.g., Card (1999 Handbook of Labor Economics) and Oreopoulos and Salvanes (2011 JEP).
 [^4]: Deschenes and Greenstone (2007 AER): the Economics Impacts of Climate Change.
 [^5]: Dell, Jones and Olken (2012 AEJ): Temperature Shocks and Economic Growth.

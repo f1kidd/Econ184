@@ -171,7 +171,6 @@ pre code {
 <p>The raw .rmd file for this assignment are available at: <a href="https://raw.githubusercontent.com/f1kidd/Econ184/main/Assignment/Assignment_1.Rmd" class="uri">https://raw.githubusercontent.com/f1kidd/Econ184/main/Assignment/Assignment_1.Rmd</a></p>
 <p>Note: For the math problems, you can either (1) type your solution and compile it with RMarkdown; (2) type your solution use another word-processing software and convert it into a PDF file; (3) write your solution on paper, scan it and make it into a legible PDF file. TAs can decide, at their discretion, that the submitted file is illegible and thus give zero credit to a question or the entire problem set. If you type your solutions (options 1 and 2 above), you will get <strong>a bonus equal to 5% of your performance</strong> on the problem set. No credit will be given if you only report the final answers without showing intermediate steps whenever appropriate.</p>
 <p>For the programming problems, you need to submit both the compiled pdf/html file and the RMarkdown (.rmd) file on LATTE. You will get <strong>an additional bonus equal to 5% of your performance</strong> if your RMarkdown file is completely reproducible with minimal altercation (install packages, etc.). That is, our team (or anyone else) should be able to recompile your Rmarkdown file and reach <em>the same</em> result. You need to explicitly write out your answers - just showing programming outputs will receive zero credit.</p>
-<p>You will be receiving a total of 15% bonus if you submit one single pdf/html compiled directly from Rmarkdown, along with the .rmd file.</p>
 <div id="question-1" class="section level3">
 <h3>Question 1:</h3>
 <p>The following table gives the joint probability distribution between employment status and college graduation among those either employed or looking for work (unemployed) in the working-age U.S. population for September 2017.</p>
@@ -201,7 +200,7 @@ pre code {
 <li>The unemployment rate is the fraction of the labor force that is unemployed. Which one of the following E(X), E(Y), 1-E(X), 1-E(Y), E(X)*E(Y), E(XY), is the unemployment rate? Explain.</li>
 <li>Calculate E(Y|X=1) and E(Y|X=0)</li>
 <li>Calculate the unemployment rate for (i) college graduates, and (ii) non-college graduates.</li>
-<li>A randomly selected number of this population reports being unemployed. What is the probability that this worker is a college graduate?</li>
+<li>A randomly selected number of this population reports being unemployed. What is the probability that this worker is not a college graduate?</li>
 <li>Are educational achievement and employment status independent? Explain.</li>
 </ol>
 </div>
@@ -214,7 +213,7 @@ pre code {
 <p>Y follows normal distribution with mean=30, variance=100.</p>
 <ol style="list-style-type: lower-alpha">
 <li>Compute the theoretical probability of <span class="math inline">\(P(20\leq Y \leq 50)\)</span>. (Hint: the “pnorm” function returns the distribution function of the normal distribution.)</li>
-<li>Use simulations (10,000 repetitions) to compute <span class="math inline">\(P(30\leq Y \leq 60)\)</span>. (Hint: the rnorm function returns random numbers from the normal distribution. Your code could look like the following:)</li>
+<li>Use simulations (10,000 repetitions) to compute <span class="math inline">\(P(30\leq Y \leq 45)\)</span>. (Hint: the rnorm function returns random numbers from the normal distribution. Your code could look like the following:)</li>
 </ol>
 <pre class="r"><code># draw 10,000 number from the above distribution and store it.
 a = 1 
@@ -228,14 +227,16 @@ a</code></pre>
 <p><span class="math inline">\(P(X=7)=0.7\)</span><br />
 <span class="math inline">\(P(X=77)=0.2\)</span><br />
 <span class="math inline">\(P(X=777)=0.1\)</span></p>
-<p>has a mean <span class="math inline">\(\mu =98\)</span>, standard deviation <span class="math inline">\(\sigma =228.01\)</span>. Use 1000 repetitions, each with a sample size of 1000,</p>
+<p>has a mean <span class="math inline">\(\mu =98\)</span>, standard deviation <span class="math inline">\(\sigma =228.01\)</span>. Use 500 repetitions, each with a sample size of 100,</p>
 <ol style="list-style-type: lower-alpha">
 <li>Verify the mean and the standard deviation of the above distribution</li>
-<li>Plot the distribution of means for those 1000 repetitions</li>
+<li>Plot the distribution of means for those 500 repetitions</li>
 </ol>
 <p>Your code could look like the following:</p>
-<pre class="r"><code># for(i in 1:1000){
-  # draw one such sample with N=1000
+<pre class="r"><code>N = 500
+n = 100
+# for(i in 1:N){
+  # draw one such sample with n=100
   # store the mean of the sample
   # store the standard deviation of the sample
 # }

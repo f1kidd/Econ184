@@ -1,6 +1,8 @@
 ---
 title: "Econ 184b, Econometrics, Assignment 1"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 The raw .rmd file for this assignment are available at: https://raw.githubusercontent.com/f1kidd/Econ184/main/Assignment/Assignment_1.Rmd
@@ -8,8 +10,6 @@ The raw .rmd file for this assignment are available at: https://raw.githubuserco
 Note: For the math problems, you can either (1) type your solution and compile it with RMarkdown; (2) type your solution use another word-processing software and convert it into a PDF file; (3) write your solution on paper, scan it and make it into a legible PDF file. TAs can decide, at their discretion, that the submitted file is illegible and thus give zero credit to a question or the entire problem set. If you type your solutions (options 1 and 2 above), you will get **a bonus equal to 5% of your performance** on the problem set. No credit will be given if you only report the final answers without showing intermediate steps whenever appropriate. 
 
 For the programming problems, you need to submit both the compiled pdf/html file and the RMarkdown (.rmd) file on LATTE. You will get **an additional bonus equal to 5% of your performance** if your RMarkdown file is completely reproducible with minimal altercation (install packages, etc.). That is, our team (or anyone else) should be able to recompile your Rmarkdown file and reach *the same* result. You need to explicitly write out your answers - just showing programming outputs will receive zero credit. 
-
-You will be receiving a total of 15% bonus if you submit one single pdf/html compiled directly from Rmarkdown, along with the .rmd file. 
 
 
 ### Question 1: 
@@ -24,7 +24,7 @@ a. Compute E(Y)
 b. The unemployment rate is the fraction of the labor force that is unemployed. Which one of the following E(X), E(Y), 1-E(X), 1-E(Y), E(X)*E(Y), E(XY), is the unemployment rate? Explain. 
 c. Calculate E(Y|X=1) and E(Y|X=0)
 d. Calculate the unemployment rate for (i) college graduates, and (ii) non-college graduates.
-e. A randomly selected number of this population reports being unemployed. What is the probability that this worker is a college graduate? 
+e. A randomly selected number of this population reports being unemployed. What is the probability that this worker is not a college graduate? 
 f. Are educational achievement and employment status independent? Explain. 
 
 ### Question 2: 
@@ -35,7 +35,7 @@ The random variable Y has a mean of 1 and a variance of 4. Let Z=(Y-1)/2. Show t
 Y follows normal distribution with mean=30, variance=100. 
 
 a. Compute the theoretical probability of $P(20\leq Y \leq 50)$. (Hint: the "pnorm" function returns the distribution function of the normal distribution.)
-b. Use simulations (10,000 repetitions) to compute $P(30\leq Y \leq 60)$. (Hint: the rnorm function returns random numbers from the normal distribution. Your code could look like the following:)
+b. Use simulations (10,000 repetitions) to compute $P(30\leq Y \leq 45)$. (Hint: the rnorm function returns random numbers from the normal distribution. Your code could look like the following:)
 
 ```{r}
 # draw 10,000 number from the above distribution and store it.
@@ -51,15 +51,17 @@ $P(X=7)=0.7$
 $P(X=77)=0.2$    
 $P(X=777)=0.1$  
 
-has a mean $\mu =98$, standard deviation $\sigma =228.01$. Use 1000 repetitions, each with a sample size of 1000,
+has a mean $\mu =98$, standard deviation $\sigma =228.01$. Use 500 repetitions, each with a sample size of 100,
 
 a. Verify the mean and the standard deviation of the above distribution
-b. Plot the distribution of means for those 1000 repetitions
+b. Plot the distribution of means for those 500 repetitions
 
 Your code could look like the following:
 ```{r}
-# for(i in 1:1000){
-  # draw one such sample with N=1000
+N = 500
+n = 100
+# for(i in 1:N){
+  # draw one such sample with n=100
   # store the mean of the sample
   # store the standard deviation of the sample
 # }

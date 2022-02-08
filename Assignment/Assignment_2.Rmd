@@ -11,7 +11,7 @@ Note: For the math problems, you can either (1) type your solution and compile i
 
 For the programming problems, you need to submit both the compiled pdf/html file and the RMarkdown (.rmd) file on LATTE. You will get **an additional bonus equal to 5% of your performance** if your RMarkdown file is completely reproducible with minimal altercation (install packages, etc.). That is, our team (or anyone else) should be able to recompile your Rmarkdown file and reach *the same* result. You need to explicitly write out your answers - just showing programming outputs will receive zero credit. 
 
-You will be receiving a total of 15% bonus if you submit one single pdf/html compiled directly from Rmarkdown, along with the .rmd file. 
+You will be receiving a total of 10% bonus if you submit one single pdf/html compiled directly from Rmarkdown, along with the .rmd file. 
 
 
 ### Question 1: 
@@ -25,16 +25,16 @@ d. $Y\sim N(5,2)$. Find Pr(6 $\leq$ Y $\leq$ 8).
 
 
 ### Question 2:
-In a survey of 400 likely voters, 215 responded that they would vote for the incumbent, and 185 responded that they would vote for the challenger. Let $p$ denote the fraction of all likely voters who preferred the incumbent at the time of the survey and let $\hat{p}$ be the fraction of survey respondents who preferred the incumbent.
+In a survey of 400 likely voters, 230 responded that they would vote for the incumbent, and 170 responded that they would vote for the challenger. Let $p$ denote the fraction of all likely voters who preferred the incumbent at the time of the survey and let $\hat{p}$ be the fraction of survey respondents who preferred the incumbent.
 
 a. Construct a 95% confidence interval for $p$.
 b. Construct a 99% confidence interval for $p$.
 
 ### Question 3:
 
-Let $Y_1,...,Y_n$ be i.i.d. random variables following N(8,4), where *n=27*. Let $\bar{Y}$ be the sample average. 
+Let $Y_1,...,Y_n$ be i.i.d. random variables following N(6,9), where *n=27*. Let $\bar{Y}$ be the sample average. 
 
-a. Find the probability that $\bar{Y} < 10$.
+a. Find the probability that $\bar{Y} < 8$.
 b. Using 10,000 repetitions, verify your answer in part (a) using R. Your code could look like the following:
 
 ```{r}

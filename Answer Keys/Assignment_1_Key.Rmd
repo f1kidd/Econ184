@@ -1,0 +1,149 @@
+---
+title: "Econ 184b, Econometrics, Assignment 1"
+output: html_document
+---
+
+The raw .rmd file for this assignment are available at: https://raw.githubusercontent.com/f1kidd/Econ184/main/Assignment/Assignment_1.Rmd
+
+And the answer key at: https://raw.githubusercontent.com/f1kidd/Econ184/main/Answer%20Keys/Assignment_1_Key.Rmd
+
+Note: For the math problems, you can either (1) type your solution and save it as a PDF file or (2) write your solution on paper, scan it and make it into a legible PDF file. TAs can decide, at their discretion, that the submitted file is illegible and thus give zero credit to a question or the entire problem set. If you type your solution, you will get **a bonus equal to 5% of your performance** on the problem set. No credit will be given if you only report the final answers without showing intermediate steps whenever appropriate. 
+
+For the programming problems, you need to submit both the compiled pdf/html file and the RMarkdown (.rmd) file on LATTE. You will get **an additional bonus equal to 5% of your performance** if your RMarkdown file is completely reproducible with minimal altercation (install packages, etc.). You need to explicitly write out your answers - just showing programming outputs will receive zero credit. 
+
+You will be receiving a total of 10% bonus if you submit one single compiled pdf/markdown file through markdown. 
+
+
+### Question 1 (35 points, 5 points each): 
+The following table gives the joint probability distribution between employment status and college graduation among those either employed or looking for work (unemployed) in the working-age U.S. population for September 2017.
+
+|          	   |Unemployed(Y=0)|Employed(Y=1)|
+| ---------------|:-------------:|:-----------:|
+| Non-college grads(X=0) |0.026|0.576|
+| College grads (X=1) |0.009|0.389|
+
+a. Compute E(Y)
+b. The unemployment rate is the fraction of the labor force that is unemployed. Which one of the following E(X), 1-E(X),E(X)$\times$E(Y),E(X$\times$Y), is the unemployment rate? Explain. 
+c. Calculate E(Y|X=1) and E(Y|X=0)
+d. Calculate the unemployment rate for (i) college graduates, and (ii) non-college graduates.
+e. A randomly selected number of this population reports being unemployed. What is the probability that this worker is a college graduate? 
+f. Are educational achievement and employment status independent? Explain. 
+
+Answers:
+
+a. $$E(Y)= 0.576*1+0.389*1+0 = 0.965$$
+b. 1-E(Y) denotes the unemployment rate. The unemployment rate represents the number of unemployed people as a percentage of the labor force. 
+c. $$E(Y|X=1) = \sum_{y=0,1} y * \frac{Pr(X=1,Y=y)}{Pr(X=1)}$$
+= ~~0 * 0.009/(0.009+0.389)~~ + $1*0.389/(0.009+0.389)=0.977$
+
+   $$E(Y|X=0) = 1*0.576/(0.576+0.026) = 0.957$$
+d. (i) 0.009/(0.009+0.389) = 2.26%
+   (ii) 0.026/(0.026+0.576) = 4.32%
+e. 0.026/(0.009+0.026) = 0.742
+f. Independence means that P(Y=a|X=b) = P(Y=a) for any a $\in$ [0,1] and b $\in$[0,1]. In words, knowing a person is a college grad or not does not help predict whether that person is employed.
+
+But from (d), we know that the expected unemployment rate for college grads is 1.5%, from non-college grads 4.3%, and overall 3.5%. So it has to be the case that graduating from college increase the chance of getting employed. In other words, educational attainment and employment status are not independent.
+
+(In math: Pr(Y=0|X=1)=0.043. Pr(Y=0)=0.035. By definition, X and Y are not independent.)
+
+(You could also calculate the correlation between X and Y to show that $cov(X,Y)\neq 0$. Note that zero correlation is a necessary, but not sufficient, condition of independence.)
+
+
+
+
+### Question 2 (15 points): 
+The random variable Y has a mean of 1 and a variance of 4. Let Z=(Y-1)/2. Show that E(Z)=0 and var(Z)=1.
+
+$$E(Z) = E((Y-1)/2) = 1/2*E(Y-1) = 1/2*(E(Y)-1) = 1/2*0 = 0$$
+
+$$var(Z) = var((Y-1)/2) = 1/4*var(Y-1) = 1/4*var(Y) = 1/4*4 = 1 $$
+
+### Question 3 (20 points. 10 points each.): 
+Y follows normal distribution with mean=30, variance=100. 
+
+a. Compute the theoretical probability of $P(20\leq Y \leq 50)$. (Hint: the "pnorm" function returns the distribution function of the normal distribution.)
+b. Use simulations (10,000 repetitions) to compute $P(30\leq Y \leq 45)$. (Hint: the rnorm function returns random numbers from the normal distribution. Your code could look like the following:)
+
+```{r}
+# draw 10,000 number from the above distribution and store it.
+
+# count the number of draws that falls in the given range. 
+#a.
+
+P1 = pnorm(50, mean =30, sd = 10)
+P2 = pnorm(20, mean =30, sd = 10)
+p_theoretical = P1 - P2
+p_theoretical
+```
+a. The theoretical probability is `r p_theoretical`. 
+
+```{r}
+#b.
+n=10000
+x = rnorm(n, mean = 30, sd = 10)
+p = sum(x<45&x>=30)/n
+p
+
+```
+b. The empirical probability of $P(30\leq Y \leq 45)$ is `r round(p,3)`. (Note: the theoretical probability is 0.433.)
+
+### Question 4 (Part a = 20 points. Part b = 10 points): 
+From the class example, we know that the distribution with possible values of X 7, 77, and 777, and the following probability:
+
+$P(X=7)=0.7$    
+$P(X=77)=0.2$    
+$P(X=777)=0.1$  
+
+has a mean $\mu =98$, standard deviation $\sigma =228.01$. Use 500 repetitions, each with a sample size of 100,
+
+a. Verify the mean and the standard deviation of the above distribution
+b. Plot the distribution of means for those 500 repetitions
+
+#### Answer:
+a. There are two ways to do this. Using math, we have:
+$$\mu = 7*0.7+77*0.2+777*0.1 = 98$$
+$$var = (98-7)^2*0.7 + (98-77)^2*0.2 + (98-777)^2*0.1 = 51989$$
+$$\sigma = sd = \sqrt{var} = 228.01$$
+
+And using programming, we have:
+```{r}
+# for(i in 1:N){
+  # draw one such sample with sample size n
+  # store the mean of the sample
+  # store the standard deviation of the sample
+# }
+# compute the mean of the sample means
+# compute the mean of the sample standard deviations
+N = 500
+n = 100
+
+mean_store = vector(length=N)
+sd_store = vector(length=N)
+for (i in 1:N) {
+  x = sample(c(7,77,777),size=n,replace=T,prob=c(0.7,0.2,0.1))
+  mean_store[i] = mean(x)
+  sd_store[i] = sd(x)
+}
+
+mean_mean = mean(mean_store)
+mean_mean
+mean_sd = mean(sd_store)
+mean_sd
+```
+The empirical mean is `r round(mean_mean,2)`, and the empirical standard deviation is `r round(mean_sd,2)`.
+
+b. The plot looks like the following:
+
+```{r,fig.keep="high"}
+# plot your data:
+  # the hist() function is the easiest way to do so.
+  # we will learn more sophisticated plotting skills later.
+hist(mean_store)
+```
+
+Note that the sampling distribution of the sample mean follows a normal distribution of mean 98, standard error of 22.8. As such, your histogram should center around 98, with probability mass between [53.3,142.7].
+
+
+
+
+

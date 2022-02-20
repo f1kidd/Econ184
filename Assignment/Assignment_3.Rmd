@@ -75,36 +75,3 @@ data = read_csv(ca_school_url)
 # compute confidence interval
 ```
 
-### Question 5
-Generate a set of new data from the model
-$$test.score = \beta_0 + \beta_1 * \text{expenditure} + u$$
-with the following parameter: $\beta_0=686$, $\beta_1=0.006$, and n=420. 
-
-* Generate "expenditure" from N(5312,401956). (So $\mu_{expenditure}=5312$)
-* Generate $u = 0.83 * \sqrt{|expenditure - \mu_{expenditure}|} * Z$, where Z~N(0,1) is independent from expenditure. 
-
-a. Is the model homoskedastic?
-b. The homoskedastic standard error for $\beta_1$ is 0.0014359 (from SW equation 5.22). With $\beta_1=0.006$, what is the range that contains 95% of $\hat{\beta}_1$ given this standard error?
-c. Use 5,000 simulations, calculate the probability that the actual $\hat{\beta}_1$ falling into the range calculated in part (b). 
-d. The hetetoskedasticity-robust standard error for $\beta_1$ is 0.0020346. what is the range that contains 95% of $\hat{\beta}_1$ given this standard error?
-e. Use the same simulation above, calculate the probability that the actual $\hat{\beta}_1$ falling into the range calculated in part (d).
-
-Your code could look like the following:
-```{r}
-n=420
-N=5000
-beta0 = 686
-beta1 = 0.006
-
-for(i in 1:N){
-# generate expenditure from the distribution
-  
-# generate u as a function of expenditure
-  
-# generate test score as a function of expenditure and u
-
-# run regression
-  
-# calculate coverage probability
-}
-```

@@ -218,38 +218,6 @@ data = read_csv(ca_school_url)
 # generate regression diagnostics
 # compute confidence interval</code></pre>
 </div>
-<div id="question-5" class="section level3">
-<h3>Question 5</h3>
-<p>Generate a set of new data from the model <span class="math display">\[test.score = \beta_0 + \beta_1 * \text{expenditure} + u\]</span> with the following parameter: <span class="math inline">\(\beta_0=686\)</span>, <span class="math inline">\(\beta_1=0.006\)</span>, and n=420.</p>
-<ul>
-<li>Generate “expenditure” from N(5312,401956). (So <span class="math inline">\(\mu_{expenditure}=5312\)</span>)</li>
-<li>Generate <span class="math inline">\(u = 0.83 * \sqrt{|expenditure - \mu_{expenditure}|} * Z\)</span>, where Z~N(0,1) is independent from expenditure.</li>
-</ul>
-<ol style="list-style-type: lower-alpha">
-<li>Is the model homoskedastic?</li>
-<li>The homoskedastic standard error for <span class="math inline">\(\beta_1\)</span> is 0.0014359 (from SW equation 5.22). With <span class="math inline">\(\beta_1=0.006\)</span>, what is the range that contains 95% of <span class="math inline">\(\hat{\beta}_1\)</span> given this standard error?</li>
-<li>Use 5,000 simulations, calculate the probability that the actual <span class="math inline">\(\hat{\beta}_1\)</span> falling into the range calculated in part (b).</li>
-<li>The hetetoskedasticity-robust standard error for <span class="math inline">\(\beta_1\)</span> is 0.0020346. what is the range that contains 95% of <span class="math inline">\(\hat{\beta}_1\)</span> given this standard error?</li>
-<li>Use the same simulation above, calculate the probability that the actual <span class="math inline">\(\hat{\beta}_1\)</span> falling into the range calculated in part (d).</li>
-</ol>
-<p>Your code could look like the following:</p>
-<pre class="r"><code>n=420
-N=5000
-beta0 = 686
-beta1 = 0.006
-
-for(i in 1:N){
-# generate expenditure from the distribution
-  
-# generate u as a function of expenditure
-  
-# generate test score as a function of expenditure and u
-
-# run regression
-  
-# calculate coverage probability
-}</code></pre>
-</div>
 
 
 

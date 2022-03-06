@@ -1,0 +1,130 @@
+---
+title: "Econ 184b, Econometrics, Assignment 3"
+
+output: html_document
+---
+
+```{r,echo=F}
+knitr::opts_chunk$set(message=F,warning=F)
+```
+
+```{r,echo=F,message=FALSE}
+library(tidyverse)
+library(ggplot2)
+library(ggthemes)
+library(magrittr)
+library(readr)
+code_dir = dirname(rstudioapi::getActiveDocumentContext()$path)
+knitr::opts_knit$set(root.dir=code_dir)
+setwd(code_dir)
+```
+
+
+The raw .rmd file for this assignment are available at: https://raw.githubusercontent.com/f1kidd/Econ184/main/Assignment/Assignment_3.Rmd
+
+Note: For the math problems, you can either (1) type your solution and compile it with RMarkdown; (2) type your solution use another word-processing software and convert it into a PDF file; (3) write your solution on paper, scan it and make it into a legible PDF file. TAs can decide, at their discretion, that the submitted file is illegible and thus give zero credit to a question or the entire problem set. If you type your solutions (options 1 and 2 above), you will get **a bonus equal to 5% of your performance** on the problem set. No credit will be given if you only report the final answers without showing intermediate steps whenever appropriate. 
+
+For the programming problems, you need to submit both the compiled pdf/html file and the RMarkdown (.rmd) file on LATTE. You will get **an additional bonus equal to 5% of your performance** if your RMarkdown file is completely reproducible with minimal altercation (install packages, etc.). That is, our team (or anyone else) should be able to recompile your Rmarkdown file and reach *the same* result. You need to explicitly write out your answers - just showing programming outputs will receive zero credit. 
+
+You will be receiving a total of 15% bonus if you submit one single pdf/html compiled directly from Rmarkdown, along with the .rmd file. 
+
+### Question 1 (30 points, 15 each):
+A survey of 328 registered voters is conducted, and the voters are asked to choose between candidate A and candidate B. Let p denote the fraction of voters in the population who prefer candidate A, and let $\hat{p}$ denote the fraction of voters in the sample who prefer candidate A.
+
+You are interested in constructing a confidence interval for p. Someone suggested that you can use $[\hat{p}-0.1,\hat{p}+0.1]$ as a confidence interval.
+
+a. What is the coverage probability of this confidence interval if p=0.6? (What is $p(\hat{p}-0.1 \leq p \leq \hat{p}+0.1)$ when p=0.6?)
+b. If you observe that $\hat{p}=0.5$, can you reject the hypothesis that $H_1: p \neq 0.6$? 
+
+## Answer
+a. $p = 0.6$, thus, $E(\hat{p}) = 0.6, SE(\hat{p}) = \sqrt{\frac{p*(1-p)}{n}} = 0.0272$
+$p(\hat{p}-0.1 \leq p \leq \hat{p}+0.1) = p(0.5 \leq \hat{p} \leq 0.7) = \Phi(3.6968)-\Phi(-3.6968)$ = 0.9999-0.0001 = 0.9998
+
+b.
+The t-statistic is (0.5-0.6)/0.0272 = -3.676.   
+Since |-3.676|>1.96, we can reject the null hypothesis. 
+
+### Question 2 (30 points, 15 each): 
+
+You want to study whether or not academic achievement is related among different subjects. For example, do students who perform well on reading also tend to perform well on math? To answer this question, you collected data on 420 school districts in California. The sample is divided into two groups:    
+
+* High-reading group is defined as school districts with reading score above 655. Let $\mu_1$ denote the population mean of math scores in this group. In the sample, this group consists of 259 school districts. For this group, the sample average of the math score is 664.11 and the standard deviation of the math score is 14.28.
+* Low-reading group is defined as school districts with reading score below 655. Let $\mu_2$ denote the population mean of math scores in this group. In the sample, this group consists of 161 school districts. For this group, the sample average of the math score is 636.02 and the standard deviation of the math score is 10.13.
+
+a. construct a 95% confidence intervals for $\mu_1-\mu_2$
+b. can we conclude that the two groups (defined by the reading score) have different math scores? Use 1% significance level. Please write out the null and alternative hypothesis, and use both the t-test and the p-value approach to test the hypothesis. 
+
+## Answer
+a.  $E(\mu_1-\mu_2) = 664.11-636.02 = 28.09$
+
+    $Sd(\mu_1-\mu_2) = \sqrt(\frac{14.28^2}{259}+\frac{10.13^2}{161}) = 1.19$ 
+    
+    $28.09+1.19*1.96 = 30.4224$
+    
+    $28.09-1.19*1.96 = 25.7576$
+    
+    Thus, the 95% confidence interval is [25.7576, 30.4224]
+
+b.
+
+$H_0: \mu_1-\mu_2 = 0$
+$H_1: \mu_1-\mu_2 \neq 0$
+
+The t statistic is calculated by $28.09/1.19 = 23.60 > 2.57$.
+
+Thus, we can reject the null hypothesis, so that there is difference between two groups. 
+
+### Question 3 (10 points):
+A professor decides to run an experiment to measure the effect of time pressure on final exam scores. He gives each of the 400 students in his course the same final exam, but some students have 90 minutes to complete the exam, while others have 120 minutes. Each student is randomly assigned one of the examination times, based on the flip of a coin. Let $Y_i$ denote the number of points scored on the exam by the i-th student. Let $X_i$ measure the amount of time that the student has to complete the exam: $X_i=1$ means "90 minutes" and $X_i=0$ means "120 minutes". Consider the regression model $Y_i = \beta_0 + \beta_1X_i + u_i$. Suppose that we estimated that $\hat{\beta}_1=10$. Consider the following statements.
+
+(1) On average, students who get 90 minutes score 10 points lower than students who get 120 minutes.
+(2) On average, students who get 90 minutes score 10 points higher than students who get 120 minutes.
+Which one of the above statements is true? Explain your answer.
+
+## Answer
+
+The second statement is true. Because when the $X_i=1$ means "90 minutes", and its corresponding slope is 10. It menas that for students who take 90 minutes will get a 10 points higher grade. 
+
+### Question 4 (30 points, 10 each)
+
+You want to study whether expenditure per student can predict the educational outcome. To answer this question, you decided to run the following regression:
+
+$$ \text{reading.score} = \beta_0 + \beta_1 * \text{expenditure} + u$$
+In the dataset CASchools.csv (available from "https://raw.githubusercontent.com/f1kidd/Econ184/main/Data/CASchools.csv"), "expenditure per student" is measured by the "expenditure" variable and "reading.score" is measured by the "read" variable. Run the above regression in R and answer the following questions:
+
+a. Compute $\beta_0$, $\beta_1$ and SE($\beta_1$). 
+b. Construct a 95% confidence interval for $\beta_1$.
+c. Should we conclude that expenditure per student can predict the reading score? Use 1% significance level. Please write out $H_0$ and $H_1$ and use the p-value approach.
+
+Answer:
+
+a.
+```{r}
+library(tidyverse)
+library(lmtest)
+library(sandwich)
+ca_school_url = "https://raw.githubusercontent.com/f1kidd/Econ184/main/Data/CASchools.csv"
+data = read_csv(ca_school_url)
+# run regression
+m = lm(data$read~data$expenditure)
+
+# generate regression diagnostics
+cf1 = coeftest(m,vcov=vcovHC)
+```
+
+b.
+```{r}
+# compute confidence interval
+upper_bound = cf1[2,1] + cf1[2,2] * 1.96
+lower_bound = cf1[2,1] - cf1[2,2] * 1.96
+round(c(lower_bound,upper_bound),digits=5)
+```
+The confidence interval is given as [`r round(c(lower_bound,upper_bound),digits=5)`]
+
+c.
+
+$H0:\beta_1 = 0$
+$H1:\beta_1 \neq 0$
+
+The associated p-value is $4.052*10^{-5} < 0.01$, thus, we can reject the null hypothesis.
+

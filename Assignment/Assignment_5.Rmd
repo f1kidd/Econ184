@@ -1,8 +1,8 @@
 ---
 title: "Econ 184b, Econometrics, Assignment 5"
 output:
-  html_document: default
   pdf_document: default
+  html_document: default
 ---
 
 ```{r,echo=F}
@@ -27,7 +27,7 @@ Note: For the math problems, you can either (1) type your solution and compile i
 
 For the programming problems, you need to submit both the compiled pdf/html file and the RMarkdown (.rmd) file on LATTE. You will get **an additional bonus equal to 5% of your performance** if your RMarkdown file is completely reproducible with minimal altercation (install packages, etc.). That is, our team (or anyone else) should be able to recompile your Rmarkdown file and reach *the same* result. You need to explicitly write out your answers - just showing programming outputs will receive zero credit. 
 
-You will be receiving a total of 15% bonus if you submit one single pdf/html compiled directly from Rmarkdown, along with the .rmd file. 
+You will be receiving a total of 10% bonus if you submit one single pdf/html compiled directly from Rmarkdown, along with the .rmd file. 
 
 
 
@@ -78,15 +78,12 @@ ggplot(data=data,aes(y=dem_ind,x=log_gdppc)) + geom_point() +
   2. If per capita income in a country increases by 20%, by how much is Dem_ind predicted to increase? What is a 95% confidence interval for the prediction? Is the predicted increase in Dem_ind large or small? (Explain what you mean by large or small.)     
   
 #### Part d:
-  1. Find a variable that varies across countries but plausibly varies little—or not at all—over time and that could cause omitted variable bias in the regression in (c).     
-  2. Find data on this variable, and estimate a new model by including Dem_ind and your variable in question. Does your result change from part (c)? Why? [^1]       
-  3. Suggest a variable that varies over time but plausibly varies little—or not at all—across countries and that could cause omitted variable bias in the regression in (c).       
-  4. Find data on this variable, and estimate a new model by including Dem_ind and your variable in question. Does your result change from part (c)? Why?  
+  1. Suggest a variable that varies across countries but plausibly varies little—or not at all—over time and that could cause omitted variable bias in the regression in (c).     
+  2. Suggest a variable that varies over time but plausibly varies little—or not at all—across countries and that could cause omitted variable bias in the regression in (c).       
   
 #### Part e:
 
   1. Estimate the regression in (c), allowing for country fixed effects.
-How do your answers to (c)(i) and (c)(ii) change?
   2. There are addition demographic controls in the data set. Should these variables be included in the regression? If so, how do the results change when they are included?
 
 #### Part f: 

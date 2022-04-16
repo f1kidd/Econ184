@@ -1,0 +1,99 @@
+---
+title: "Econ 184b, Spring 2022, Final Project"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r,echo=F}
+knitr::opts_chunk$set(message=F,warning=F)
+```
+
+```{r,echo=F,message=FALSE}
+library(tidyverse)
+library(ggplot2)
+library(ggthemes)
+library(magrittr)
+library(readr)
+# code_dir = dirname(rstudioapi::getActiveDocumentContext()$path)
+# knitr::opts_knit$set(root.dir=code_dir)
+# setwd(code_dir)
+```
+
+Note on submission format: 
+
+* You are expected to turn in the problems in a **report format**: formulate succinct and coherent arguments and use econometric outputs as your evidence. Cite any reference if necessary. Just showing programming outputs will receive zero credit. 
+  - A report will generally include sections of introduction, data and methods, analysis, and conclusion. 
+* You need to submit (1) the compiled pdf/html file; (2) the RMarkdown (.rmd) file; (3) any additional data you used on LATTE. You will get a bonus equal to 5% of your performance if your RMarkdown file is completely reproducible with minimal altercation (install packages, load data, etc.). That is, our team (or anyone else) should be able to recompile your Rmarkdown file and reach *the same* result. 
+
+Note on collaboration: 
+
+* You are allowed to work in a group of no more than two people. If you choose to work individually, you will receive a 5% bonus added to your final grade. Your grade CANNOT exceed 100% even if you choose to work individually. State your team member (if any) clearly on the first page of your report.
+* You are expected to complete this project individually/between your team members. Any help from others (excluding permitted individuals, details below) are not allowed. Any dishonest behaviors will result in an automatic zero on the final project, in addition to being referred to the Department of Student Rights and Community Standards.
+* You are allowed to direct questions towards myself, the TAs, and/or other resources available at the institutional level, e.g., a research librarian. Please be noted although our team is happy to offer high-level guidance, **we are under no obligation to help you debug your code and/or check your answers.**
+
+### Project Narrative
+Agriculture is one of the most heavily impacted sector when it comes to future climate change. Crop growth depends almost solely on the local weather/climate for the past thousands of years: in a warm, humid year, crop grows better. When weather conditions are worsened (too cold, too hot, or too dry), crop yield decreases. The key question for us going into the future: how will agriculture be impacted by future climate change? Will we be running out of food soon?
+
+[Deschenes and Greenstone (2007, American Economic Review)](https://pubs.aeaweb.org/doi/pdfplus/10.1257/aer.97.1.354) estimated the impact of climate change on agriculture in the United States.^[See here for further notes on the paper: [Fisher et al. (2012)](https://www.aeaweb.org/articles?id=10.1257/aer.102.7.3749) The Economic Impacts of Climate Change: Evidence from Agricultural Output and Random Fluctuations in Weather: Comment ] Here we try to replicate a simplified version of their analysis. 
+
+The dataset ["Greenstone.csv"]("https://raw.githubusercontent.com/f1kidd/Econ184/main/Data/greenstone2007.csv") contains the original dataset used by Deschenes and Greenstone. Explanation to Key variables in the dataset are provided on the [class Github site here](https://github.com/f1kidd/Econ184/raw/main/Final%20Project/Greenstone2007_Variables.docx). 
+
+**(Note: do not just answer the questions. Formulate your own argument upon/beyond the guiding questions here.)**
+
+(a) Make a summary statistics table documenting the following variables on counties practicing dryland agriculture (*dry=1*). Include the mean, median, standard deviation, minimum, and maximum value for each variable.
+
+* total agricultural land area (*fland*); 
+* percentage clay in soil (*clay*); 
+* percentage sand in soil (*sand*); 
+* average growing degree days, 1970-2000 (*dd89_7000*); 
+* average growing season precipitation, 1970-2000 (*prcp_7000_0410*); 
+* real land value per acre (*rvalue_lb_acre*); 
+* real expected profit per acre (*(rtfsale-rtotexp)/fland* * 1000)
+
+```{r,echo=F}
+sum_stats = function(vector,...){
+out = c(mean(vector,...),median(vector,...),sd(vector,...),
+      min(vector,...),max(vector,...))
+return(out)
+}
+```
+
+```{r,echo=F,eval=F}
+data = read_csv("https://raw.githubusercontent.com/f1kidd/Econ184/main/Data/greenstone2007.csv")
+data %<>% dplyr::mutate(rprofit_acre = (rtfsale-rtotexp)*1000/fland)
+varlist = c("fland","clay","sand","dd89","prcp_0410","rvalue_lb_acre","rprofit_acre")
+table1 = t(apply(data[,varlist],2,function(x) sum_stats(x,na.rm=T)))
+colnames(table1) = c("Mean","Median","SD","Min","Max")
+round(table1,digits=3)
+```
+
+(b) Make a histogram for average growing degree days (*dd89_7000*). Does that seem correct? Check if any other variables have the same problem and correct them.
+
+(Hint: for growing degree days in a year to be zero, it has to be the case that EVERY day between April and October has a mean daily temperature below 8 degree Celsius, the lower cutoff for GDD.)
+
+(c) [Mendelsohn, Nordhaus, and Shaw (1994)](https://www.jstor.org/stable/2118029) estimated a Ricardian hedonic regression, where they assess the impact of climate change from observing the correlation between agricultural land values and the local long-run climate. Their idea was inherited from the David Ricardo tradition: agricultural land value is just the discounted stream of net revenue from agricultural outputs. If climate change has an impact on future agricultural productivity, it should surely be reflected in land values. 
+
+Mendelsohn et al.(1994)'s model can be written as the following OLS model: 
+
+$$Y_i = \beta_0 + \beta_1 \bar{DD}_i + \beta_2 \bar{Precip}_i + \gamma Soil_i + \delta X_i + u_i \quad (1)$$
+
+where $Y_i$ is the real agricultural land value, a function of **long-run average** of growing degree days ($\bar{DD}$), **long-run average** of precipitation ($\bar{Precip}$), a series of soil variables (use variables from *clay* to *salt*), and local social-economics (use variables *X1* to *X9*). Estimate the model using data from year 1987, and explain your findings. 
+
+(d) Now, make a projection regarding the impact of climate change on US agriculture based on equation(1). *dd89_gw* and *prcp_ugw* offers growing degree days and precipitation projections for future climate. The corresponding Hadley2 model projections (*h2_med* and *h2_long* post scripts) are also included in the dataset. 
+
+(e) Deschenes and Greenstone (2007) argues that the Mendelsohn et al. (1994)'s approach is an inconsistent estimate of future climate impact. Use what you have learned from this class, articulate an argument for/against this assertion. 
+
+(f) Instead, Deschenes and Greenstone estimated a panel fixed-effect model: 
+
+$$Y_{it} = \beta_0 + \beta_1 DD_{it} + \beta_2 Precip_{it} + \delta X_{it} + \lambda_i + v_t + u_{it} \quad (2)$$
+where $Y_i$ is the real agricultural net revenue (*(rtfsale-rtotexp)/fland* * 1000), a function of **yearly fluctuation** of growing degree days (*DD*), **yearly fluctuation** of precipitation (*Precip*), along with socio-economic control variables. Estimate the model using data from all years (1987-2002), and explain your findings.
+
+(g) Make a projection regarding the impact of climate change on US agriculture based on equation (2).
+
+(h) Do you observe any divergence between the two approaches? Where is the discrepancy coming from? Why do they lead to the same/different projections? Which model do you trust as a reliable future projection for how climate change is going to impact agriculture? 
+
+
+ 
+
+
